@@ -36,7 +36,7 @@ Check BP_Documentation for more details.
 
 # Technical 
 
-For more information on how it's used, check [Engine Options Subsystem](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/EngineOptionsSubsystem.md).  
+For more information on how it's used, check [Engine Options Subsystem](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/EngineOptionsSubsystem.md). This also covers how to hook up listeners to actually apply your changes in your systems!
 
 - FEngineOptionGameLayer stores the Game Settings Maps: Byte Map, Float Map, and String Map. Each can be saved individually.
 - FEngineOptionGameProfile stores an Array of Layers, giving the control of multiple Map Settings through multiple menus / etc.
