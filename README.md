@@ -48,6 +48,8 @@ Engine Versions:
 - 4.26 = 1.1
 - 4.27 = 1.1
 
+[Changelogs](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/ChangeLog.md)
+
 #### Updates
 
 **1.1** - Release Date: December 20th 2021
