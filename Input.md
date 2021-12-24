@@ -94,8 +94,6 @@ In 1.0, you can only rebind inputs through direct device input, which disallows 
 In 1.0, you can only set up profiles directly at the config level, making testing entirely different layouts beyond just different profiles a laborious experience. Now, you can specify these settings at a data asset level, which means that you can switch entire configurations easily. 
 Note: These settings will get applied to the default layouts whenever there’s a valid data asset pointer. If there isn’t, we’ll just load the values specified at the config level for Input Component.
 
-![image](https://user-images.githubusercontent.com/28312571/147321728-8eae43c9-6c1a-458b-812a-0aa367f2656b.png)
-
 ![image](https://user-images.githubusercontent.com/28312571/147321595-f5336ff7-1b88-48a2-afaf-751d2c2f8e91.png)
 
 
@@ -106,6 +104,8 @@ Note: These settings will get applied to the default layouts whenever there’s 
 An annoying thing about 1.0 is that the default implementation displayed quite ugly results when it came to the input names, as it displayed the input binding name directly. This Data asset provides Text [localizable] configurations to give your values.
 
 ![image](https://user-images.githubusercontent.com/28312571/147321671-5bda33cd-c470-4b0f-add5-2cb23f777d99.png)
+
+![image](https://user-images.githubusercontent.com/28312571/147321728-8eae43c9-6c1a-458b-812a-0aa367f2656b.png)
 
 ![image](https://user-images.githubusercontent.com/28312571/147321708-a5de4c9a-913f-4e8d-ba1a-e1de3d622129.png)
 
