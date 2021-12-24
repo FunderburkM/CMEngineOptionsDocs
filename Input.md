@@ -133,7 +133,6 @@ Another great element of this is that we use these layouts to restrict what keys
 
 Additionally, for initially filling configurations out we have included an Editor Utility ‘BPEW_SetInputConfigDataLayout”   
 ![image](https://user-images.githubusercontent.com/28312571/147322027-3fa590f9-6878-457f-9a48-8c80b98d8b3e.png)
-![image](https://user-images.githubusercontent.com/28312571/147322202-1d215b8e-ea5f-4d5c-be1b-742a07a1f4e4.png)
 
 ## Controller Query Detection
 
