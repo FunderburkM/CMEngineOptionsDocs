@@ -13,13 +13,33 @@ Universal Engine Options is an optimized, modular, flexible, and easily implemen
 
 **Modular Widget Framework** (1.1+) : Implementing your own widgets is now an incredibly simple process with the new framework.  
 
+*** 
 
+#### Table of Contents  
+[Index](#Index)  
+[Release Stats](#Release-Stats)  
+[Access Videos and Inside the Editor](#Access)  
+[Setup in the Engine](#setup-in-engine)  
+[Documentation Notes](#Notes)  
 
 # Index 
 
-[Framework](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/Framework.md)
+- [Framework](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/Framework.md)   
+Explains the base ways of the plugin, plugin settings, documentation, saving capabilities, and common practices     
+- [Graphic Settings](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/Graphics.md)   
+Covers the Graphic settings available, auto detect settings, among others.      
+- [Audio Settings](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/Audio.md)    
+Glosses over the audio settings available    
+- [Input and Rebinding Settings](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/Input.md)   
+Overviews the input rebinding system, manual and auto rebinding, key layouts, etc.      
+- [Game Setting Settings](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/GameSettings.md)   
+Explains how the Game Settings framework applies, and explains how to set it up      
+- [Engine Subsystem Settings and Plugin Implementation](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/EngineOptionsSubsystem.md)    
+  Covers the subsystem implementation, how to implement multiple systems and frameworks, using the saving system, plugin setup warnings, setting up FOV, etc  
+- [Modular Widget setup introduced in 1.1](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/WidgetSetup.md)   
+Explains the new widget framework and how to extend it yourself to fit your exact project needs!    
 
-
+***
 
 # Release Stats   
 Engine Versions:  
@@ -53,3 +73,27 @@ For marketplace elements, you will be able to access through “YourEngineInstal
 **Inside the Editor**  
 To use the plugin, download the Plugin to your Engine and install it. Open your project, and head to Plugin. Search for CM_Engine_Options, enable, and restart your editor. To access the demo content, navigate to CM_Engine_Options Content.   
 ![image](https://user-images.githubusercontent.com/28312571/147303926-6881ab50-7c0b-4f32-8464-746842265b8f.png)
+
+**BP Exposure Availability**
+Please refer to CM_Engine_Options Content/BP_Options_Documentation.    
+
+![image](https://user-images.githubusercontent.com/28312571/147325436-f71e257e-237a-4dce-acdf-d33de5c2e940.png)
+
+# Setup in Engine
+
+To use the plugin, you only need to enable the plugin inside your project. That will have the Subsystem set up!  
+
+> This next part is only needed for 1.0  
+
+In order to apply the currently loaded settings on Application launch as well as set the base functionality required to run things, we run Settings_Apply_Startup
+
+![image](https://user-images.githubusercontent.com/28312571/147325730-063096f2-1a35-45d8-bb41-61f6e56c8a5d.png)
+
+
+# NOTES 
+
+Check [Engine Options Subsystem](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/EngineOptionsSubsystem.md) for information on Rule sets, Blueprint Implementation, Implementing Field of View, System usage and Warnings.
+
+
+
+
