@@ -1,4 +1,4 @@
-# CMEngineOptionsDocs
+# CMEngineOptions - Docs
 Documentation for the Universal Options Marketplace Plugin / TTW Module   
 
 [Unreal Marketplace Profile](https://www.unrealengine.com/marketplace/en-US/profile/M+Funderburk) 
@@ -6,9 +6,12 @@ Documentation for the Universal Options Marketplace Plugin / TTW Module
 ##### Table of Contents  
 [Release](#Release-stats)  
 [Access](#Access)  
-[Framework](#Framework)
+[Index](#Index)  
+[Framework](#Framework)  
+[Project Settings](#ProjectSettings)  
 
 
+***
 
 Universal Engine Options is an optimized, modular, flexible, and easily implementable framework for general application settings. Control several profiles, save files, settings recovery, extendable settings, and input modes! Add exceptions to your rebindings, set your sound rules, and more!   
 
@@ -25,8 +28,18 @@ Engine Versions:
 - 4.26 = 1.1
 - 4.27 = 1.1
 
-Release Dates
-- 1.1 - December 20th 2021
+#### Updates
+
+**1.1** - Release Date: December 20th 2021
+
+![image](https://user-images.githubusercontent.com/28312571/147304497-8ed31b91-022e-4602-86bd-8accc6abe042.png)
+
+- New Widget Framework
+- Input Element significantly revamped
+- Auto Detect Graphics 
+- Significantly better detection & handling
+
+***
 
 # Access  
 
@@ -37,24 +50,18 @@ For marketplace elements, you will be able to access through “YourEngineInstal
 [Test Build - 1.0](https://drive.google.com/file/d/16SRHBlQJdJcamcISwTUcFHT6MKPjcV56/view?usp=sharing)   
 
 
-## Inside the Editor
+**Inside the Editor**  
 To use the plugin, download the Plugin to your Engine and install it. Open your project, and head to Plugin. Search for CM_Engine_Options, enable, and restart your editor. To access the demo content, navigate to CM_Engine_Options Content. 
 ![image](https://user-images.githubusercontent.com/28312571/147303926-6881ab50-7c0b-4f32-8464-746842265b8f.png)
  
 
-# Framework
+***
 
-Universal Options is implemented through a [ULocalPlayerSubsystem](https://docs.unrealengine.com/en-US/API/Runtime/Engine/Subsystems/ULocalPlayerSubsystem/index.html) , and is available to both C++ and blueprints. [Community Wiki](https://www.ue4community.wiki/programming-subsystems-29v70qij).  
-![image](https://user-images.githubusercontent.com/28312571/147303903-4ca4492a-7253-4084-ad01-1e0e1629f4ac.png)
+# Index 
+
+[Framework](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/Framework.md)
+
+***
 
 
-## General
-
-The system is very modular. From a Blueprint/Implementation perspective, the system walks by working with delegates; quickly and easily set up your classes/widgets to respond to settings’ events with ease. Delegates can be set to your UMG/HUD/Controller/etc classes easily!  
-
-The system is greatly exposed, having over 50 functions exposed to blueprints.
-![image](https://user-images.githubusercontent.com/28312571/147303881-813610d7-a0ca-4c14-a696-866448a62c8f.png)
-
-The plugin also contains a large amount of commenting, and is decently self-docummented. 
-![image](https://user-images.githubusercontent.com/28312571/147303849-bbfc0e4a-f217-447f-a9e3-c34491e8ea54.png)
 
