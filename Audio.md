@@ -10,7 +10,7 @@ For widget implementations, check the Widget page in the documentation.
 
 # Technical
 
-- FEngineOptionSoundLayer  Acts as a “sound Class” representative. Stores name as ID, float and Sound Class Values. It manages Volume, Pitch, and Fade Distance
-- FEngineOptionSoundProfile implements the multiple Sound Layers and a Sound Mix.
+For more information on how it's used, check [Engine Options Subsystem](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/EngineOptionsSubsystem.md).  
 
-For more information on how it's used, check [Engine Options Subsystem](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/EngineOptionsSubsystem.md).
+- FEngineOptionSoundLayer  Acts as a “sound Class” representative. Stores name as ID, float and Sound Class Values. It manages Volume, Pitch, and Fade Distance
+- FEngineOptionSoundProfile implements the multiple Sound Layers and a Sound Mix
