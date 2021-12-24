@@ -8,20 +8,21 @@ Documentation for the Universal Options Marketplace Plugin / TTW Module
 
 Universal Engine Options is an optimized, modular, flexible, and easily implementable framework for general application settings. Control several profiles, save files, settings recovery, extendable settings, and input modes! Add exceptions to your rebindings, set your sound rules, and more!   
 
-*Plug and Play* : Implemented at a ULocalPlayerSubsystem level, access and change Engine Options from any class, anywhere! For Multiplayer projects, this still ensures that only local machines are affected by said settings. Accessible to both C++ and Blueprints!  
+**Plug and Play** : Implemented at a ULocalPlayerSubsystem level, access and change Engine Options from any class, anywhere! For Multiplayer projects, this still ensures that only local machines are affected by said settings. Accessible to both C++ and Blueprints!  
 
-*Extended Flexibility* : Implementation is up to the user. We do not tie functionality behind a UMG Class and/or limit the user to the settings and combinations that are set by default. Graphics, sounds, and input settings are largely customizable.    
+**Extended Flexibility** : Implementation is up to the user. We do not tie functionality behind a UMG Class and/or limit the user to the settings and combinations that are set by default. Graphics, sounds, and input settings are largely customizable.    
 
-*Modular Widget Framework [1.1+]* : Implementing your own widgets is now an incredibly simple process with the new framework.  
+**Modular Widget Framework** (1.1+) : Implementing your own widgets is now an incredibly simple process with the new framework.  
 
+## Release Stats   
 Engine Versions:  
 - 4.24 = 1.0
 - 4.25 = 1.1
 - 4.26 = 1.1
 - 4.27 = 1.1
 
-**Plugin/Development Notes** 
-Due to the size of the update in 1.1, its content will be thoroughly explained within the respective segments/functionality that got updated/revamped/introduced. For future updates, please refer to Changelogs for further information unless otherwise mentioned in this section. 
+Release Dates
+- 1.1 - December 20th 2021
 
 # Access  
 
