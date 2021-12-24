@@ -3,14 +3,6 @@ Documentation for the Universal Options Marketplace Plugin / TTW Module
 
 [Unreal Marketplace Profile](https://www.unrealengine.com/marketplace/en-US/profile/M+Funderburk) 
 
-##### Table of Contents  
-[Release](#Release-stats)  
-[Access](#Access)  
-[Index](#Index)  
-[Framework](#Framework)  
-[Project Settings](#ProjectSettings)  
-
-
 ***
 
 Universal Engine Options is an optimized, modular, flexible, and easily implementable framework for general application settings. Control several profiles, save files, settings recovery, extendable settings, and input modes! Add exceptions to your rebindings, set your sound rules, and more!   
@@ -21,7 +13,15 @@ Universal Engine Options is an optimized, modular, flexible, and easily implemen
 
 **Modular Widget Framework** (1.1+) : Implementing your own widgets is now an incredibly simple process with the new framework.  
 
-## Release Stats   
+
+
+# Index 
+
+[Framework](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/Framework.md)
+
+
+
+# Release Stats   
 Engine Versions:  
 - 4.24 = 1.0
 - 4.25 = 1.1
@@ -39,7 +39,7 @@ Engine Versions:
 - Auto Detect Graphics 
 - Significantly better detection & handling
 
-***
+
 
 # Access  
 
@@ -51,17 +51,5 @@ For marketplace elements, you will be able to access through “YourEngineInstal
 
 
 **Inside the Editor**  
-To use the plugin, download the Plugin to your Engine and install it. Open your project, and head to Plugin. Search for CM_Engine_Options, enable, and restart your editor. To access the demo content, navigate to CM_Engine_Options Content. 
+To use the plugin, download the Plugin to your Engine and install it. Open your project, and head to Plugin. Search for CM_Engine_Options, enable, and restart your editor. To access the demo content, navigate to CM_Engine_Options Content.   
 ![image](https://user-images.githubusercontent.com/28312571/147303926-6881ab50-7c0b-4f32-8464-746842265b8f.png)
- 
-
-***
-
-# Index 
-
-[Framework](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/Framework.md)
-
-***
-
-
-
