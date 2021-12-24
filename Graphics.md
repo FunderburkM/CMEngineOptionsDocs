@@ -62,6 +62,8 @@ Used by both the 1.0 and 1.1 Widgets, you can now set your custom text [localiza
 
 # Technical
 
+For more information on how it's used, check [Engine Options Subsystem](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/EngineOptionsSubsystem.md).  
+
 Generally explained, it is Implemented through the classes:
 - FEngineOptionsProfileName   
   Handles the basic information for Profile Information, their name and whether or not they’re Standard/Custom/Custom without Rules.   
