@@ -48,6 +48,7 @@ Each major module has its own function prefix.
 
 Functions without a prefix are getters/specific functions used internally.   
 You can check either LPSS_Engine_Options.h or BP_Documentation for a list of functions and delegates.
+![](https://user-images.githubusercontent.com/28312571/147325436-f71e257e-237a-4dce-acdf-d33de5c2e940.png)
 
 ## Field of View
 
