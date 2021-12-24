@@ -1,4 +1,4 @@
-#Engine Options Subsystem and Implementation
+# Engine Options Subsystem and Implementation
 
 #### Table of Contents  
 
@@ -21,7 +21,7 @@ Struct Functions are exposed by the function libraries:
 
 The whole system is brought together by the ULocalPlayerSubsystem ULPSS_Engine_Options. This is the class with the Delegates, Functions, Save Connection Mechanisms, etc. 
 
-**We encourage only this class’ functions to be used for major functionality. **
+**We encourage only this class’ functions to be used for major functionality.**
 
 In this example project, we implement things as modularly as possible, setting up basic widgets with delegates that then get executed at the merging UMG level. 
 
@@ -112,4 +112,5 @@ void AMyActor::GameSettingUpdate_Byte(FName ProfileName, FName SettingName)
 # Technical  
 
 - **ULPSS_Engine_Options** is the Player Subsystem that holds everything in place, handling the different elements, their interaction, and handles broadcasts for others to listen to.
+- **USG_Engine_Options** is the save game that stores the data locally.
 - **FEngineOptionsCurrentControllerData** implements the controller & device connected and recognized information.
