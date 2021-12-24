@@ -1,11 +1,11 @@
 # Graphics 
 
 #### Table of Contents
-[Graphics Profile](#Graphics-Profile)
-[Default Settings](#DefaultSettings)
-[Auto Detect Settings](#AutoDetect)
-[Localization and Custom Text Setups](#UpdateText)
-[Technical Info](#Technical)
+[Graphics Profile](#Graphics-Profile)  
+[Default Settings](#DefaultSettings)   
+[Auto Detect Settings](#AutoDetect)  
+[Localization and Custom Text Setups](#UpdateText)  
+[Technical Info](#Technical)  
 
 For Graphic Quality Settings, you can have as many Graphic Profiles as you wish; edit the datatable/make your own and set as many standard/custom profiles as you want to!
 Check Graphics Profile (DataTable) for more information.  
