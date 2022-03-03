@@ -32,26 +32,41 @@ Generally speaking, these widgets mirror/replicate the setups from the widgets i
 
 ## Class hierarchy
 - Graphics
-  - Graphic_Slot -> used for Quality Slot entries, such as Textures/Shadows/etc. Each entry is responsible for/modifies a specific quality setting. 
-  - Graphic_SlotProfile -> used for Quality Profile switching which affects all quality types -and therefore is treated as the “global” switcher. Switches in between the different layers that Graphic Profile has [Low/Medium/Custom] etc
-  - Graphic_Page -> auto generates Graphic Slot and Profile, and serves as the baseline for storing Graphic-related widgets. Check the Blueprint setup for info. Resolution/Frame Limit/Vsync/among others are added at the BP level.
+  - **Graphic_Slot**  
+  Used for Quality Slot entries, such as Textures/Shadows/etc. Each entry is responsible for/modifies a specific quality setting. 
+  - **Graphic_SlotProfile**  
+  Used for Quality Profile switching which affects all quality types -and therefore is treated as the “global” switcher. Switches in between the different layers that Graphic Profile has [Low/Medium/Custom] etc
+  - **Graphic_Page** 
+  Auto generates Graphic Slot and Profile, and serves as the baseline for storing Graphic-related widgets. Check the Blueprint setup for info. Resolution/Frame Limit/Vsync/among others are added at the BP level.
 
 - Audio
-  - Audio_Slot -> used to represent a specific entry of a given Sound Layer. You can have Sound::Volume, Sound::Pitch, and Sound::FadeDuration
-  - Audio_Page -> auto generates/detects Audio Slots, and can generate as many widgets as there are settings for it. Check the Blueprint setup for info. If auto generation is turned off, it can auto detect Audio Slot classes added at design time.
+  - **Audio_Slot**  
+  Used to represent a specific entry of a given Sound Layer. You can have Sound::Volume, Sound::Pitch, and Sound::FadeDuration
+  - **Audio_Page**  
+  Auto generates/detects Audio Slots, and can generate as many widgets as there are settings for it. Check the Blueprint setup for info. If auto generation is turned off, it can auto detect Audio Slot classes added at design time.
 
 - Input
-  - Input_Slot -> represents a given binding entry; can be either Action or Axis Binding. It can showcase raw Text for Key (From FKey) or search for Layout Config Entry (Either text or texture).
-  - Input_OptionsWindow -> is the widget that pops up whenever a binding request is made, either by listening key or manual binding. Is summoned by Input_Slot by the user’s request.
-  - Input_KeyEntry -> Is what OptionsWindow uses to fill its dropdown. It can showcase raw Text for Key (From FKey) or search for Layout Config Entry (Either text or texture).
-  - Input_Page -> Handles the different profile switching, generation, and Input Request handling. Input Profiles present get generated at the BP level. 
+  - **Input_Slot**  
+  Represents a given binding entry; can be either Action or Axis Binding. It can showcase raw Text for Key (From FKey) or search for Layout Config Entry (Either text or texture).
+  - **Input_OptionsWindow**  
+  Is the widget that pops up whenever a binding request is made, either by listening key or manual binding. Is summoned by Input_Slot by the user’s request.
+  - **Input_KeyEntry**  
+  Is what OptionsWindow uses to fill its dropdown. It can showcase raw Text for Key (From FKey) or search for Layout Config Entry (Either text or texture).
+  - **Input_Page**  
+  Handles the different profile switching, generation, and Input Request handling. Input Profiles present get generated at the BP level. 
 
 - Game Settings
-  - Game_Page -> represents an individual Game Profile [for example in the default project, the Gameplay Profile that contains Perma Death and Mouse Multiplier settings]. The Individual Slots are added at the BP level.
-  - Game_PageCollection -> Contains and switches between different Pages. The Pages are added at the BP level.
+  - **Game_Page**  
+  Represents an individual Game Profile [for example in the default project, the Gameplay Profile that contains Perma Death and Mouse Multiplier settings]. The Individual Slots are added at the BP level.
+  
+  > Game Pages also have an additional filtering concept for Subsystem Updates. Please check [the widget section](#game-settings-widget).  
+  
+  - **Game_PageCollection**  
+  Contains and switches between different Pages. The Pages are added at the BP level.
 
 - General
-  - General_Page-> Handles the switching between active widgets, Active Profile and SubProfile [check save profile], as well as is recommended to be the one with the save/check pending/reset settings functions/buttons.
+  - **General_Page**  
+  Handles the switching between active widgets, Active Profile and SubProfile [check save profile], as well as is recommended to be the one with the save/check pending/reset settings functions/buttons.
 
 ***
 
@@ -65,7 +80,9 @@ We have left things like Resolution/Frame Limit/Window Mode/etc at the blueprint
 
 ![image](https://user-images.githubusercontent.com/28312571/147323853-cbd4ba0b-de91-4d6b-a5fe-dd15ce25bbd2.png)
 
-You only need to set up the widget layout to your needs, plus set the send functions + override the update parameter functions. Bool Parameters include things like Vsync, float parameters include Frame rate, and string parameters include Resolution
+You only need to set up the widget layout to your needs, plus set the send functions + override the update parameter functions. Bool Parameters include things like Vsync, float parameters include Frame rate, and string parameters include Resolution. 
+
+> This is because we don't force the design classes of specific sub elements, and allow the user more flexibility on these elements. Not every project requires every setting to be included, plus different project may choose different ways of changing things like Gamma etc.  
 
 ![image](https://user-images.githubusercontent.com/28312571/147323867-7e570d08-2a7e-4219-96a9-86d00a03d922.png)
 
@@ -102,6 +119,8 @@ You only need to set up the widget layout to your needs, plus set the send funct
 ![image](https://user-images.githubusercontent.com/28312571/147324340-4c0f8a7d-b03c-42d5-b119-865ff1cb41bb.png)
 
 To update your values, you’ll need to override the adequate update visual functions, where you can check the name of the setting and update the visual elements.   
+
+> **NOTE** This filtering is extremely important! We have this double layer in conjunction with the double settings as when updating bulk parameters, subsystems fire with an "ALL" value for Settings Name. When we get this, the widget will check these defined arrays and make sure we get all the setting function updates run as needed.  
 
 ![image](https://user-images.githubusercontent.com/28312571/147324371-cbbeb562-2386-455b-a29c-8f4d643e2f8d.png)
  
