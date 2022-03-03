@@ -56,7 +56,34 @@ For Graphics, Sounds, Input, and Game (All)
 - The system interacts in the following way: By default, Config File [Project Settings] are loaded on application startup. In the same context where defaults are loaded, we check/create the save game file and check if any profiles/subprofiles have the “Saved” flag for them. If we find them, those will update the current settings.   
 - On Check Pending Save, we compare against the currently saved values; not the default ones!   
 
+### Save Notes
+
+Whenever you make large changes to your settings, including:  
+* Renaming/Removing existing profiles:  
+  * Sound Profiles  
+  * Game Settings  
+  * Input Profiles  
+  * Profiles inside the Graphic Settings Data Table  
+
+We recommend deleting the previous save file. Depending on your configuration settings (and/or especially if you're on 1.0), trying to load those values may result in a crash.  
+
+> You can check specific notes about how to deal with these settings in each [Page](README.md#Index).  
+
+
 ### 1.1 
+
+#### Rename your Sav file name! 
+
+You can change the name of the save file from cpp.  
+> You can do this if you either have the plugin inside YourProject/Plugins/ or if you're working with a source engine.  
+
+
+The Save slot name is defined in Source/CM_Engine_Options/Private/CS_Engine_Options.cpp.  You can change this value and recompile. For cleanliness purposes, we recommend removing the previous save file name.  
+
+ ```cpp
+ const FString FEngineOptionsStaticNames::STRING_SaveSlotName = FString(TEXT("SG_Engine_Options"));
+ ```
+
 
 #### Load Save Config
 
