@@ -6,6 +6,23 @@
 [Updates](#Updates)  
 [Technical](#Technical)  
 
+For Information on Game Settings related widgets (1.1+), please [check this page](WidgetSetup.md#game-settings-widget).  
+For Information on saving and loading configuration, please check our [saving system](Framework.md#save).
+
+## Setting Types
+
+We offer three types of settings:  
+* Float Settings:  
+    Best used with numeric types of settings that may involve decimals, negative numbers, or numbers larger than 255.    
+* String Settings:  
+    Best used with non numeric values. Any kind of string works here.  
+* Byte Settings:  
+    Best used with values lesser than 255. Is/can also be used for Enumerator conversions, booleans (0 false 1 true).  
+    
+> We strongly recommend using Byte settings to account for boolean settings. You can check example usecases in the V1 example Widgets.  
+
+## Overview
+
 Easy and powerful way to store endless settings of different types! Store as many settings as you want in as many categories as you decide!  
 
 ![image](https://user-images.githubusercontent.com/28312571/147318780-1ceb3784-802e-42e5-827f-4d1c0e416794.png)
@@ -19,10 +36,11 @@ You can have as many Groups as you want. Furthermore, each group holds Maps on B
 
 When setting Values, you can decide to either broadcast the set value or add it to pending broadcasts. By default, we don’t broadcast on Sent. If you decide to not broadcast the value on edited however, you MUST run the Apply Pending Save function for that profile [if not All profiles] so that the Modified Delegates do in fact run.    
 
-# Broadcast Method  
+
+## Broadcast Method  
 When Setting a Game Setting Option, you have the Option to Broadcast it. If Broadcast is true, it will broadcast that setting change at the time of setting the value. Otherwise, it will broadcast it at the time of saving.  
 
-# Warnings
+## Warnings
 
 Do not add profiles on RUNTIME! However, you can add Settings (Bytes/Floats/Strings) by modifying that profile’s Structure (LPSS_Engine_Options->GameSettings.Layers[ProfileIndex].Bytes.Add(“MySettingName”, 2))
 
@@ -34,7 +52,7 @@ In 1.0, fetching multiple settings at once was a painful operation. In 1.1, You 
 Check BP_Documentation for more details.
 
 
-# Technical 
+## Technical 
 
 For more information on how it's used, check [Engine Options Subsystem](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/EngineOptionsSubsystem.md). This also covers how to hook up listeners to actually apply your changes in your systems!
 
