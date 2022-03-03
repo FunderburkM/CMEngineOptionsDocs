@@ -3,6 +3,9 @@ Documentation for the Universal Options Marketplace Plugin / TTW Module
 
 [Unreal Marketplace Profile](https://www.unrealengine.com/marketplace/en-US/profile/M+Funderburk) 
 
+[Universal Options 1.0 Video Overview](https://www.youtube.com/watch?v=-e1E1KV_mTw)  
+[Universal Options 1.1 Update Video Overview](https://www.youtube.com/watch?v=ibudswpE9o0)  
+
 ***
 
 Universal Engine Options is an optimized, modular, flexible, and easily implementable framework for general application settings. Control several profiles, save files, settings recovery, extendable settings, and input modes! Add exceptions to your rebindings, set your sound rules, and more!   
