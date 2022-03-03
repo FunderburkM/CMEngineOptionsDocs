@@ -42,7 +42,10 @@ When Setting a Game Setting Option, you have the Option to Broadcast it. If Broa
 
 ## Warnings
 
-Do not add profiles on RUNTIME! However, you can add Settings (Bytes/Floats/Strings) by modifying that profile’s Structure (LPSS_Engine_Options->GameSettings.Layers[ProfileIndex].Bytes.Add(“MySettingName”, 2))
+Do not add profiles on RUNTIME! However, you can add Settings (Bytes/Floats/Strings) by modifying that profile’s Structure. Example: 
+```cpp
+LPSS_Engine_Options->GameSettings.Layers[ProfileIndex].Bytes.Add(“MySettingName”, 2));
+```
 
 # Updates
 > This is available in 1.1     
