@@ -1,18 +1,19 @@
 # Input
 
 #### Table of Contents  
-[Base Description in 1.0](#Base-description)  
-[Warnings](#Warnings)  
-[Updates Section](#Updates)  
--  [Option Updates & Cancellation Keys](#Option-Updates)    
--  [Compound Keys and Manual Rebinding](#Compound-Keys--and-manual-rebinding)    
+[Base Description in 1.0](#base-description)  
+[Warnings](#warnings)  
+[Updates Section](#updates)  
+-  [Option Updates & Cancellation Keys](#option-updates)    
+-  [Compound Keys and Manual Rebinding](#compound-keys--manual-binding)    
 -  [Input Profile Data Assets](#input-profile-data-assets)  
--  [Input Binding Text Collection Data Assets](#Input-binding-text-collection-data-assets)  
+-  [Input Binding Text Collection Data Assets](#input-binding-text-collection-data-assets)  
 -  [Input Key Layout Data Assets](#input-key-layout-data-assets)  
 -  [Controller Query Detection](#controller-query-detection)  
-  
-[Technical](#Technical)
+-  [Technical](#technical)
 
+For Information on Input Settings related widgets (1.1+), please [check this page](WidgetSetup.md#input-widget).  
+For Information on saving and loading configuration, please check our [saving system](Framework.md#save).  
 
 Handle your input like never before!   
 
@@ -22,12 +23,12 @@ Handle your input like never before!
 #  Base Description  
 > Initial Base Description on 1.0 (check below for updated states in 1.1+)
 
-- You can have as many Input Profiles as you want! 
-- Have profiles only accept specific inputs [Input Profile Type; Keyboard, Gamepad, or All]
-- You can allow/block Axis and Actions to exchange places. [Allow Interbindings]
-- This means that currently bound Action Keys can switch Keys with currently bound Axis Keys.
-- You can also add static keys: these are keys that can’t be rebound/can’t act as keys for rebinding. Accepts both Axis and Actions. 
-- RebindScanType allows 3 types: Error (Can’t set if it already exists), Override (if it already exists, it will set existing bound to null), and Switch (A->B, B->A).
+- You can have as many Input Profiles as you want!   
+- Have profiles only accept specific inputs [Input Profile Type; Keyboard, Gamepad, or All]  
+- You can allow/block Axis and Actions to exchange places. [Allow Interbindings]  
+    This means that currently bound Action Keys can switch Keys with currently bound Axis Keys.  
+- You can also add static keys: these are keys that can’t be rebound/can’t act as keys for rebinding. Accepts both Axis and Actions.   
+- RebindScanType allows 3 types: Error (Can’t set if it already exists), Override (if it already exists, it will set existing bound to null), and Switch (A->B, B->A).  
 - You can have Profiles fill themselves with whatever information you have from Config by Using bAutofill. Alternatively, you can make, from the config Panel, the entire mapping for a given profile! [Exception is if you save a given Input Profile, then it will load that instead]
 - For Showcasing, you can select whether you want Static Keys to be available [bShowStatic] as well as have alternative names for Negative Values [MapAlternateNames], so you can show both MoveForward and MoveBackward.
 
