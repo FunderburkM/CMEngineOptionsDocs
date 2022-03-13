@@ -8,12 +8,15 @@ As of 1.1, we do not recommend using the Widgets inside CM_Engine_Options Conten
 - [General Convention](#general-convention)  
 - [Class hierarchy](#class-hierarchy)     
 
-[Blueprint Setup of Widgets](#Blueprint-setup)
+[Blueprint Setup of Widgets](#blueprint-setup)
 - [Graphics Widget](#graphics-widget)
 - [Audio Widget](#audio-widget)
 - [Game Settings Widget](#game-settings-widget)
 - [Input Widget](#input-widget)
-- [General Widget](#General-widget)
+- [General Widget](#general-widget)  
+
+[Widget Example Framework](#examples) (1.2+)  
+> Please make sure you read through at least Hierarchy and some general information of Blueprint Setup of Widgets to have a general understanding of the framework. Base Important information for Example and Generic/Template widgets in C++ and BP will be mentioned there instead of in the [Examples](#examples) section. In there we will just cover how we've implemented these specifically.     
 
 # Hierarchy
 The first section of this segment will overview the C++ classes and general conventions. Once that is covered, we will go over the 1.1 implementations and steps needed to roll out your own setups! We’ll be including the Technical Elements for C++ widgets in this part. The widgets can be found inside CM_EngineOptions/public|private/Widgets.
@@ -55,7 +58,10 @@ Generally speaking, these widgets mirror/replicate the setups from the widgets i
   - **Input_Page**  
   Handles the different profile switching, generation, and Input Request handling. Input Profiles present get generated at the BP level. 
 
-- Game Settings
+- Game Settings  
+
+  - **Game_Slot** (Available in 1.2)  
+  Represents an individual Game Setting. Check [Examples](#examples) for more information.  
   - **Game_Page**  
   Represents an individual Game Profile [for example in the default project, the Gameplay Profile that contains Perma Death and Mouse Multiplier settings]. The Individual Slots are added at the BP level.
   
@@ -174,4 +180,109 @@ Finally, we register our window widget to the page
 
 ![image](https://user-images.githubusercontent.com/28312571/147324970-57aec9a7-41f0-4a3d-8c64-b13b61b5a17b.png)
 
+__________________________________  
+
+# Examples
+
+> This feature is available on 1.2  
+
+The Point of Example Widgets is to even further the reduce the setup necessary in order to get your custom version up and running. We focus on the big brain stuff, you focus on making it look flashier!  
+
+> As updates roll out, so will more example configurations. If you have any suggestions and/or contributions, send us a message :)  
+
+## Example Implementation
+
+### Advanced Copy
+
+In case you want to simply duplicate an entire configuration for your project to use as a starting point, you can use the Engine's `Advanced Copy` Feature.  
+
+![image](https://user-images.githubusercontent.com/28312571/158045466-5c72cdd4-8c52-499b-b6b0-f7ac6b272735.png)  
+
+Then as you drag it in, select advanced copy. This will copy it with all the references required and they will update to the newly created assets.  
+
+![image](https://user-images.githubusercontent.com/28312571/158045503-6035dd7e-9530-4bb8-823e-14b1632d374e.png)  
+
+> **NOTE**: For 1.2.0, you may spot a couple of lingering references to either V1 or Test Widgets. This should be resolved by 1.2.1.  
+
+Your screen may look something like this. Click Accept and you're ready to go!  
+
+![image](https://user-images.githubusercontent.com/28312571/158045522-7af3fcc6-e355-4f9b-b2e1-d4079850c495.png)  
+
+### Manual
+
+If you want even **more** control, we also recommend inheriting from our widgets directly! Each Template Example will have a specific set of children that you can take a look into inheriting from. If the present examples don't quite fit what you're after, you can inherit from the [Widgets in 1.1](#blueprint-setup) and do their setup as mentioned/shown in the V1_1 folder.  
+
+You can either extend our classes in 
+* C++: you can check ``/CM_Engine_Options/Source/CM_Engine_Options/Public/Widgets/` for 1.1 widgets and `/CM_Engine_Options/Source/CM_Engine_Options/Public/Widgets/Templates` (/Default, /Generic/ and other Examples in next updates) for examples on implementation  
+* Bp: Follow the Above notes as well as take a look at the Widgets inside V1_1  
+
+## Major Widget Additions 
+
+### Base Widgets
+
+#### Game Slot 
+
+> This is available in 1.2  
+
+Unlike Game Page, which required you to have an entire widget dedicated for a given Profile and still, to some degree, required you to manually parse your updates and settings, here we have introduced The Game Slot. 
+
+Game Slot can handle a single setting from any profile (And of any type, byte/float/string) on its own. you can even change what even it is listening to at runtime!  
+
+![image](https://user-images.githubusercontent.com/28312571/158046073-1f8c4ff1-abef-4e51-8c3e-8a9f875edf30.png)  
+
+To set its base values up, you only need to modify a couple of variables:  
+![image](https://user-images.githubusercontent.com/28312571/158046152-afb7af24-468c-44f0-b03d-36e4b3d41bdb.png)  
+
+and then set their Listening and Setting functions. Here're the examples on Widget for the [Default Example](#example-default)  
+![image](https://user-images.githubusercontent.com/28312571/158046111-82f4449d-fbd2-4282-a838-f11a6d32f554.png)  
+
+1.2 comes with:  
+
+* `WBP_EOD_Slot_Boolean`, which can handle boolean-like (usually from byte, but can also accept float and string) parameters in a simple fashion.  
+* `WBP_EOD_Slot_Slider`, which can handle modifying settings through a slider. Useful for float values like Field of View, Audio Volume, among others.  
+* `WBP_EOD_Slot_StringSwitch`, whicn can handle swapping between multiple strings.  
+
+You can see them getting used in `WBP_EOD_Game_Page`. You only need to drag your Game Slot Widget, set its parameters and you're done!  
+![image](https://user-images.githubusercontent.com/28312571/158046225-0c005819-43ad-4b89-8d01-e5068b70154a.png)
+
+
+### Generic Widgets
+
+For the blueprint implementation examples of these, you can refer to `/Content/Examples/Generic` and see just how little you have to do to get your setups working 🤘.  
+
+#### Example Generic 
+
+Prefix for Blueprints: WBP_EO_
+
+* **CM_Engine_Options_Widget_Base_Button** (1.2)  
+  Abstracted version of `BP_Test_Options_Widget_Base_Button`. Provides an easy to use Button with plenty of basic options.  
+  > Blueprint Version. `WBP_EO_BaseButton`  
+  
+  ![image](https://user-images.githubusercontent.com/28312571/158045664-aa20386e-6e71-4027-bf68-eb9ac6e08887.png)  
+
+* **CM_Engine_Options_Widget_Title_Button** (1.2)  
+  Child class of `CM_Engine_Options_Widget_Base_Button` that adds the value of a category name. We use this for switching between Input Profile Names, as an example.   
+  > Blueprint Version. `WBP_EO_TitleButton`  
+  
+  ![image](https://user-images.githubusercontent.com/28312571/158045743-edcf433d-28a2-4659-8873-99d2e322e998.png)
+
+* **CM_Engine_Options_Widget_Slider** (1.2)    
+  Abstracted Version of `WBP_EngineOptions_Slider`. Provides an easy way of setting up a setting Widget with a slider.  
+  > Blueprint Version. `WBP_EO_Slider`  
+  
+  ![image](https://user-images.githubusercontent.com/28312571/158045800-88038d02-470c-4ed3-a5f8-8ac896cacd27.png)
+
+* **WBP_EO_StringSlider** (1.2)  
+  Child class of 1.1 widget `Generic String Switch`.  
+  
+#### Example Default
+
+> This Example Layout is available in 1.2
+
+Prefix for blueprints: WBP_EOD_
+
+* **CM_Engine_Options_Widget_Graphics_Page_Default** : Child Class of `CM_Engine_Options_Widget_Graphics_Page` 
+* **CM_Engine_Options_Widget_Graphics_Slot_Button** : Child Class of `CM_Engine_Options_Widget_Graphics_Slot`  
+* **CM_Engine_Options_Widget_Graphics_SlotProfile_Button** : Child Class of `CM_Engine_Options_Widget_Graphics_SlotProfile`  
+* **CM_Engine_Options_Widget_Input_Slot_Default** : Child Class of `CM_Engine_Options_Widget_Input_Slot`  
 
