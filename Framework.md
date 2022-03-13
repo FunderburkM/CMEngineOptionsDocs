@@ -22,6 +22,10 @@ The system is greatly exposed, having over 50 functions exposed to blueprints.
 The plugin also contains a large amount of commenting, and is decently self-docummented. 
 ![image](https://user-images.githubusercontent.com/28312571/147303849-bbfc0e4a-f217-447f-a9e3-c34491e8ea54.png)
 
+You can easily find our functions by just typing `TTW` in the search bar! 
+![image](https://user-images.githubusercontent.com/28312571/158045113-51e69737-86b5-485c-9fca-6d547befbfae.png)  
+
+
 ***  
 
 # Project Settings 
