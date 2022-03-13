@@ -47,9 +47,9 @@ Explains the new widget framework and how to extend it yourself to fit your exac
 # Release Stats   
 Engine Versions:  
 - 4.24 = 1.0
-- 4.25 = 1.1
-- 4.26 = 1.1
-- 4.27 = 1.1
+- 4.25 = 1.2
+- 4.26 = 1.2
+- 4.27 = 1.2
 
 [Changelogs](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/ChangeLog.md)
 
@@ -64,7 +64,12 @@ Engine Versions:
 - Auto Detect Graphics 
 - Significantly better detection & handling
 
+**1.2** - Release Date: March 11th 2021  
 
+- New Concept: Example Widgets  
+- Vast Commenting Improvements  
+- Handling user misconfigurations  
+- Audio and Game Settings Data Assets  
 
 # Access  
 
