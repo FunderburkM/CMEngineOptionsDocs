@@ -15,6 +15,8 @@ As of 1.1, we do not recommend using the Widgets inside CM_Engine_Options Conten
 - [Input Widget](#input-widget)
 - [General Widget](#general-widget)  
 
+[Major Widget Additions](#major-widget-additions)  
+
 [Widget Example Framework](#examples) (1.2+)  
 > Please make sure you read through at least Hierarchy and some general information of Blueprint Setup of Widgets to have a general understanding of the framework. Base Important information for Example and Generic/Template widgets in C++ and BP will be mentioned there instead of in the [Examples](#examples) section. In there we will just cover how we've implemented these specifically.     
 
@@ -180,6 +182,36 @@ Finally, we register our window widget to the page
 
 ![image](https://user-images.githubusercontent.com/28312571/147324970-57aec9a7-41f0-4a3d-8c64-b13b61b5a17b.png)
 
+__________________________________
+
+## Major Widget Additions
+
+### Game Slot 
+
+> This is available in 1.2  
+
+Unlike Game Page, which required you to have an entire widget dedicated for a given Profile and still, to some degree, required you to manually parse your updates and settings, here we have introduced The Game Slot. 
+
+Game Slot can handle a single setting from any profile (And of any type, byte/float/string) on its own. you can even change what even it is listening to at runtime!  
+
+![image](https://user-images.githubusercontent.com/28312571/158046073-1f8c4ff1-abef-4e51-8c3e-8a9f875edf30.png)  
+
+To set its base values up, you only need to modify a couple of variables:  
+![image](https://user-images.githubusercontent.com/28312571/158046152-afb7af24-468c-44f0-b03d-36e4b3d41bdb.png)  
+
+and then set their Listening and Setting functions. Here're the examples on Widget for the [Default Example](#example-default)  
+![image](https://user-images.githubusercontent.com/28312571/158046111-82f4449d-fbd2-4282-a838-f11a6d32f554.png)  
+
+1.2 comes with:  
+
+* `WBP_EOD_Slot_Boolean`, which can handle boolean-like (usually from byte, but can also accept float and string) parameters in a simple fashion.  
+* `WBP_EOD_Slot_Slider`, which can handle modifying settings through a slider. Useful for float values like Field of View, Audio Volume, among others.  
+* `WBP_EOD_Slot_StringSwitch`, whicn can handle swapping between multiple strings.  
+
+You can see them getting used in `WBP_EOD_Game_Page`. You only need to drag your Game Slot Widget, set its parameters and you're done!  
+![image](https://user-images.githubusercontent.com/28312571/158046225-0c005819-43ad-4b89-8d01-e5068b70154a.png)
+
+
 __________________________________  
 
 # Examples
@@ -216,35 +248,8 @@ You can either extend our classes in
 * C++: you can check ``/CM_Engine_Options/Source/CM_Engine_Options/Public/Widgets/` for 1.1 widgets and `/CM_Engine_Options/Source/CM_Engine_Options/Public/Widgets/Templates` (/Default, /Generic/ and other Examples in next updates) for examples on implementation  
 * Bp: Follow the Above notes as well as take a look at the Widgets inside V1_1  
 
-## Major Widget Additions 
 
-### Base Widgets
-
-#### Game Slot 
-
-> This is available in 1.2  
-
-Unlike Game Page, which required you to have an entire widget dedicated for a given Profile and still, to some degree, required you to manually parse your updates and settings, here we have introduced The Game Slot. 
-
-Game Slot can handle a single setting from any profile (And of any type, byte/float/string) on its own. you can even change what even it is listening to at runtime!  
-
-![image](https://user-images.githubusercontent.com/28312571/158046073-1f8c4ff1-abef-4e51-8c3e-8a9f875edf30.png)  
-
-To set its base values up, you only need to modify a couple of variables:  
-![image](https://user-images.githubusercontent.com/28312571/158046152-afb7af24-468c-44f0-b03d-36e4b3d41bdb.png)  
-
-and then set their Listening and Setting functions. Here're the examples on Widget for the [Default Example](#example-default)  
-![image](https://user-images.githubusercontent.com/28312571/158046111-82f4449d-fbd2-4282-a838-f11a6d32f554.png)  
-
-1.2 comes with:  
-
-* `WBP_EOD_Slot_Boolean`, which can handle boolean-like (usually from byte, but can also accept float and string) parameters in a simple fashion.  
-* `WBP_EOD_Slot_Slider`, which can handle modifying settings through a slider. Useful for float values like Field of View, Audio Volume, among others.  
-* `WBP_EOD_Slot_StringSwitch`, whicn can handle swapping between multiple strings.  
-
-You can see them getting used in `WBP_EOD_Game_Page`. You only need to drag your Game Slot Widget, set its parameters and you're done!  
-![image](https://user-images.githubusercontent.com/28312571/158046225-0c005819-43ad-4b89-8d01-e5068b70154a.png)
-
+## Base Widgets
 
 ### Generic Widgets
 
