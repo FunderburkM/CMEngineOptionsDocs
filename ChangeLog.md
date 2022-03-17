@@ -3,6 +3,7 @@
 # 1.1 
 
 State: Released on 4.25, 4.26, 4.27  
+Release Date: 18th Dec 2021  
 
 New Features  
 
@@ -32,6 +33,7 @@ Bug Fixes:
 # 1.2
 
 State: Released on 4.25, 4.26, 4.27  
+Release Date: 11th March 2022
 
 New Features  
 
@@ -44,6 +46,7 @@ New Features
 
 Improvements:  
 
+- **Massively increased Documentation and added overview videos**  
 - Improved the accuracy of Auto Detect Settings  
 - Massive Overhaul of Commenting inside the plugin - Variables and Functions now have much more extensive descriptions. especially for C++ types  
 - Added Macros for Logging and Function handling to improve the readibility of the code  
@@ -58,12 +61,12 @@ Crash Fixes / Safe Guards:
 
 ## 1.2.1 
 
-State: (Coming soon)  
+State: Released on 4.25, 4.26, 4.27  
+Release Date: 17th March 2022  
 
 Improvements:  
 
-- Fixed a dependency issue on Examples/Default/WBP_EOD_Input_Window. It no longer uses /Test or /V1_1 widgets.  
-- Abstracted EOD_Input_Window into C++, easing implementation process.  
+- Fixed a dependency issue on Examples/Default/WBP_EOD_Input_Window. It no longer uses /Test or /V1_1 widgets. 
 
 
 # 1.3  
