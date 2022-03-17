@@ -3,8 +3,7 @@ Documentation for the Universal Options Marketplace Plugin / TTW Module
 
 [Unreal Marketplace Profile](https://www.unrealengine.com/marketplace/en-US/profile/M+Funderburk) 
 
-[Universal Options 1.0 Video Overview](https://www.youtube.com/watch?v=-e1E1KV_mTw)  
-[Universal Options 1.1 Update Video Overview](https://www.youtube.com/watch?v=ibudswpE9o0)  
+[Universal Options Video Playlist](https://www.youtube.com/playlist?list=PLybwJiY_V7EE8fHECPGtVyQkWW2Tn8mHj)  
 
 ***
 
@@ -47,29 +46,11 @@ Explains the new widget framework and how to extend it yourself to fit your exac
 # Release Stats   
 Engine Versions:  
 - 4.24 = 1.0
-- 4.25 = 1.2
-- 4.26 = 1.2
-- 4.27 = 1.2
+- 4.25 = 1.2.1  
+- 4.26 = 1.2.1  
+- 4.27 = 1.2.1  
 
-[Changelogs](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/ChangeLog.md)
-
-#### Updates
-
-**1.1** - Release Date: December 20th 2021
-
-![image](https://user-images.githubusercontent.com/28312571/147304497-8ed31b91-022e-4602-86bd-8accc6abe042.png)
-
-- New Widget Framework
-- Input Element significantly revamped
-- Auto Detect Graphics 
-- Significantly better detection & handling
-
-**1.2** - Release Date: March 11th 2021  
-
-- New Concept: Example Widgets  
-- Vast Commenting Improvements  
-- Handling user misconfigurations  
-- Audio and Game Settings Data Assets  
+[Changelogs](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/ChangeLog.md)  
 
 # Access  
 
