@@ -47,8 +47,9 @@ Explains the new widget framework and how to extend it yourself to fit your exac
 Engine Versions:  
 - 4.24 = 1.0
 - 4.25 = 1.2.1  
-- 4.26 = 1.2.1  
-- 4.27 = 1.2.1  
+- 4.26 = 1.2.5  
+- 4.27 = 1.2.5  
+- 5.00 = 1.2.5  
 
 [Changelogs](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/ChangeLog.md)  
 
