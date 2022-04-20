@@ -2,7 +2,8 @@
 
 
 For Information on Audio Settings related widgets (1.1+), please [check this page](WidgetSetup.md#audio-widget).  
-For Information on saving and loading configuration, please check our [saving system](Framework.md#save).
+For Information on saving and loading configuration, please check our [saving system](Framework.md#save).  
+For Information on the Redirect System, please check our [Redirect page](Framework.md#redirects).  
 
 
 # Implementation  
