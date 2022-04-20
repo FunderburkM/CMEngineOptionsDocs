@@ -61,17 +61,32 @@ Crash Fixes / Safe Guards:
 
 ## 1.2.1 
 
-State: Released on 4.25, 4.26, 4.27  
+State: Released on 4.25, 4.26, 4.27, 5.00  
 Release Date: 17th March 2022  
 
 Improvements:  
 
 - Fixed a dependency issue on Examples/Default/WBP_EOD_Input_Window. It no longer uses /Test or /V1_1 widgets. 
 
+## 1.2.5  
+
+State: Released on 4.26, 4.27, 5.00  
+Release Date: 19th April 2022  
+
+New:  
+
+* Redirect System for All settings! Redirect your saved settings to new values. Widgets from Examples and more respond to them!  
+
+Bug Fixes:  
+
+- Fixed a bug when loading Game and Audio Settings from data asset on game startup.  
+- Fixed a bug for Setting Load Priority: Ensure Config and Keep Config; Keep Config was not filtering values correctly.  
+- Fixed a Crash for 5.00 for Command Variables not being found  
+- Fixed auto detect firing apply settings multiple times 
 
 # 1.3  
 
-State: Coming Early Q2 2022  
+State: Coming Q2 2022  
 
 New Features  
 
