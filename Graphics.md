@@ -9,6 +9,7 @@
 
 For Information on Graphic Settings related widgets (1.1+), please [check this page](WidgetSetup.md#graphics-widget).  
 For Information on saving and loading configuration, please check our [saving system](Framework.md#save).  
+For Information on the Redirect System, please check our [Redirect page](Framework.md#redirects).  
 
 For Graphic Quality Settings, you can have as many Graphic Profiles as you wish; edit the datatable/make your own and set as many standard/custom profiles as you want to!
 Check Graphics Profile (DataTable) for more information.  
