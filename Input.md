@@ -15,6 +15,7 @@
 
 For Information on Input Settings related widgets (1.1+), please [check this page](WidgetSetup.md#input-widget).  
 For Information on saving and loading configuration, please check our [saving system](Framework.md#save).  
+For Information on the Redirect System, please check our [Redirect page](Framework.md#redirects).  
 
 Handle your input like never before!   
 
