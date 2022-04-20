@@ -76,6 +76,7 @@ Release Date: 19th April 2022
 New:  
 
 * Redirect System for All settings! Redirect your saved settings to new values. Widgets from Examples and more respond to them!  
+* You can now add Individual Game Settings as well as Entire Game Settings Layers at runtime!  
 
 Bug Fixes:  
 
