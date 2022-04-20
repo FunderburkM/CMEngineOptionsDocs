@@ -6,6 +6,7 @@
 [General](#General)  
 [Project Settings](#ProjectSettings)  
 [Saving](#Save)  
+[Redirects](#redirects)  
 
 Universal Options is implemented through a [ULocalPlayerSubsystem](https://docs.unrealengine.com/en-US/API/Runtime/Engine/Subsystems/ULocalPlayerSubsystem/index.html) , and is available to both C++ and blueprints. [Community Wiki](https://www.ue4community.wiki/programming-subsystems-29v70qij).  
 ![image](https://user-images.githubusercontent.com/28312571/147303903-4ca4492a-7253-4084-ad01-1e0e1629f4ac.png)
@@ -101,5 +102,30 @@ Load Save Config can be found in Graphics, Sound, and Game Settings modules.
 - Keep Save: Will maintain save files as absolute options  
 
 
+### 1.2.5 
+
+### Redirects
+
+Introducing Redirects! You can now have old profiles and setting names correspond correctly to newly added elements!  
+
+Graphics  
+![image](https://user-images.githubusercontent.com/28312571/164125545-1060bbfb-3887-4d9f-854e-082796ffdcb6.png)  
+
+Sound/Audio  
+![image](https://user-images.githubusercontent.com/28312571/164125603-40c25884-d9cf-404a-af28-440a43310a1d.png)  
+
+Input  
+![image](https://user-images.githubusercontent.com/28312571/164125725-8c7a5ab2-f3ce-4d79-a2e0-c1c834626b42.png)  
+
+Game settings  
+![image](https://user-images.githubusercontent.com/28312571/164125827-f063d5e3-a873-4cb4-9e42-abeae4a3bf73.png)  
+
+
+Getters in Blueprint/C++  
+![image](https://user-images.githubusercontent.com/28312571/164125879-baf3c341-2a0f-4a9e-9e4e-73ac26ca2fca.png)  
+
+
+V1 and Example Widgets can respond to this without issue!  
+![image](https://user-images.githubusercontent.com/28312571/164125959-feddd2a0-190e-4564-8e45-c930ac055820.png)
 
 
