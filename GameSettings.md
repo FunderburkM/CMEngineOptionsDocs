@@ -8,7 +8,8 @@
 [Technical](#Technical)  
 
 For Information on Game Settings related widgets (1.1+), please [check this page](WidgetSetup.md#game-settings-widget).  
-For Information on saving and loading configuration, please check our [saving system](Framework.md#save).
+For Information on saving and loading configuration, please check our [saving system](Framework.md#save).  
+For Information on the Redirect System, please check our [Redirect page](Framework.md#redirects).  
 
 ## Setting Types
 
@@ -89,6 +90,17 @@ You can set the data asset at Default settings and can also set on Runtime! this
 You can change the Data Asset Configuration at runtime using this function:  
 ![image](https://user-images.githubusercontent.com/28312571/158042297-58afd101-fc20-43f7-901e-ec96a9a24ae2.png)  
 
+## Add Settings at Runtime
+
+> This is available in 1.2.5 
+
+Set, Get and/or update settings by an entire layer at runtime!  
+
+![image](https://user-images.githubusercontent.com/28312571/164126341-68cef100-0baf-43a6-8c81-60a6e1a2345d.png)  
+
+Set or Add individual layers at runtime!  
+
+![image](https://user-images.githubusercontent.com/28312571/164126398-f8a04dd3-3a53-407b-9bb7-f49163083e24.png)  
 
 
 ## Technical 
