@@ -1,91 +1,56 @@
-# CMEngineOptions - Docs
-Documentation for the Universal Options Marketplace Plugin / TTW Module   
+# Universal Options - Docs
 
-[Unreal Marketplace Profile](https://www.unrealengine.com/marketplace/en-US/profile/M+Funderburk) 
+Documentation for the Universal Options Marketplace Plugin, V2! Available for Unreal Engine 5.  
 
-[Universal Options Video Playlist](https://www.youtube.com/playlist?list=PLybwJiY_V7EE8fHECPGtVyQkWW2Tn8mHj)  
+[Unreal Marketplace Profile](https://www.unrealengine.com/marketplace/en-US/profile/M+Funderburk)  
 
-***
+[For documentation on v1.x version of this plugin, visit this branch.](https://github.com/FunderburkM/CMEngineOptionsDocs/tree/V1-Docs)  
 
-Universal Engine Options is an optimized, modular, flexible, and easily implementable framework for general application settings. Control several profiles, save files, settings recovery, extendable settings, and input modes! Add exceptions to your rebindings, set your sound rules, and more!   
+---  
 
-**Plug and Play** : Implemented at a ULocalPlayerSubsystem level, access and change Engine Options from any class, anywhere! For Multiplayer projects, this still ensures that only local machines are affected by said settings. Accessible to both C++ and Blueprints!  
+This Readme focuses on the basic elements. For more information, please refer to the following pages:  
 
-**Extended Flexibility** : Implementation is up to the user. We do not tie functionality behind a UMG Class and/or limit the user to the settings and combinations that are set by default. Graphics, sounds, and input settings are largely customizable.    
+* [How Settings Work](/HowSettingsWork.md)  
+* [Working With the Settings System](/WorkingWithTheSettingsSystem.md)  
+* [Understanding Assets](/UnderstandingAssets.md)  
+* [Working with Widgets](/WorkingWithWidgets.md)  
 
-**Modular Widget Framework** (1.1+) : Implementing your own widgets is now an incredibly simple process with the new framework.  
+## Content
 
-*** 
+The Plugin's technical name is `CM_Engine_Options`, and its friendly name is `Universal Options`.  
 
-#### Table of Contents  
-[Index](#Index)  
-[Release Stats](#Release-Stats)  
-[Access Videos and Inside the Editor](#Access)  
-[Setup in the Engine](#setup-in-engine)  
-[Documentation Notes](#Notes)  
+To enable the plugin, go to Plugins window and search for Universal Options and enable the plugin.  
+![Plugin Window](Resources/Basics/SS_PluginWindow.JPG)  
 
-# Index 
+You can find the files and content inside the Plugin Directory - Universal Options.  
+![Content Browser](Resources/Basics/SS_ContentBrowser_Content.JPG)  
 
-- [Framework](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/Framework.md)   
-Explains the base ways of the plugin, plugin settings, documentation, saving capabilities, and common practices     
-- [Graphic Settings](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/Graphics.md)   
-Covers the Graphic settings available, auto detect settings, among others.      
-- [Audio Settings](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/Audio.md)    
-Glosses over the audio settings available    
-- [Input and Rebinding Settings](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/Input.md)   
-Overviews the input rebinding system, manual and auto rebinding, key layouts, etc.      
-- [Game Setting Settings](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/GameSettings.md)   
-Explains how the Game Settings framework applies, and explains how to set it up      
-- [Engine Subsystem Settings and Plugin Implementation](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/EngineOptionsSubsystem.md)    
-  Covers the subsystem implementation, how to implement multiple systems and frameworks, using the saving system, plugin setup warnings, setting up FOV, etc  
-- [Modular Widget setup introduced in 1.1](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/WidgetSetup.md)   
-Explains the new widget framework and how to extend it yourself to fit your exact project needs!    
+All uassets related to V1.x elements have been moved to `Content/Deprecated` as shown above. `Content/General Content` contains demo textures and sound files for our test setup. `Content/v2 Content` is where we'll be working with. `Map_Test_Options` is the test map for v1.x, and `Map_Test_Options_V2` for the latest.  
 
-***
+Inside `v2 Content`, we'll see our main Data assets for settings and widget settings.  
+![V2 Content](Resources/Basics/SS_ContentBrowser_V2Content.JPG)  
 
-# Release Stats   
-Engine Versions:  
-- 4.24 = 1.0
-- 4.25 = 1.2.1  
-- 4.26 = 1.2.5  
-- 4.27 = 1.2.5  
-- 5.00 = 1.2.5  
+## Loading Settings
 
-[Changelogs](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/ChangeLog.md)  
+Before we continue, let's explain how to find them. Go to your Project Settings, and scroll down to Plugins section. `Universal Options (Deprecated)` is for the V1.x settings, and `Universal Options` is for our active settings.  
+![Plugin Bar](Resources/Basics/SS_ProjSettings_Bar.jpg)  
 
-# Access  
+For V2 loading settings, we declare our functionality at the data asset level. Here, you define your data asset to use and the save game name.
+![Loading](Resources/Basics/SS_ProjSettings_Loading.JPG)  
 
-For marketplace elements, you will be able to access through “YourEngineInstallPath/Engine/Plugins/Marketplace/CM_Engine_Options”.   
-   
-[Documentation Video - 1.0](https://youtu.be/-e1E1KV_mTw)  
-[Documentation Video - 1.1](https://youtu.be/ibudswpE9o0)  
-[Test Build - 1.0](https://drive.google.com/file/d/16SRHBlQJdJcamcISwTUcFHT6MKPjcV56/view?usp=sharing)   
+### Initialization Settings
 
+You can specify in which circumstances should modules get disabled. For example, while testing in Editor, you may not want the input system to automatically load rebinding input settings.  
+![Initiation](Resources/Basics/SS_ProjSettings_Init.JPG)  
+![Initiation2](Resources/Basics/SS_ProjSettings_Init2.JPG)  
 
-**Inside the Editor**  
-To use the plugin, download the Plugin to your Engine and install it. Open your project, and head to Plugin. Search for CM_Engine_Options, enable, and restart your editor. To access the demo content, navigate to CM_Engine_Options Content.   
-![image](https://user-images.githubusercontent.com/28312571/147303926-6881ab50-7c0b-4f32-8464-746842265b8f.png)
+### Backwards Compatibility
 
-**BP Exposure Availability**
-Please refer to CM_Engine_Options Content/BP_Options_Documentation.    
+You can control which version gets loaded (v1.x or v2) by going in the Deprecated Settings and checking this option:  
+![V2 Setting](Resources/Basics/SS_ProjSettings_Deprecated.JPG)  
 
-![image](https://user-images.githubusercontent.com/28312571/147325436-f71e257e-237a-4dce-acdf-d33de5c2e940.png)
+We can also check and recover for V1 save files that your project may have already! In the `Universal Options` section, head down to `Backward Compatibility` category.  
+![Backwards](Resources/Basics/SS_ProjSettings_Backwards.JPG)  
 
-# Setup in Engine
-
-To use the plugin, you only need to enable the plugin inside your project. That will have the Subsystem set up!  
-
-> This next part is only needed for 1.0  
-
-In order to apply the currently loaded settings on Application launch as well as set the base functionality required to run things, we run Settings_Apply_Startup
-
-![image](https://user-images.githubusercontent.com/28312571/147325730-063096f2-1a35-45d8-bb41-61f6e56c8a5d.png)
-
-
-# NOTES 
-
-Check [Engine Options Subsystem](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/main/EngineOptionsSubsystem.md) for information on Rule sets, Blueprint Implementation, Implementing Field of View, System usage and Warnings.
-
-
-
-
+The system is controlled by the `V1 Recovery Modules`, a bit flag where you can control which **saved** modules from V1 do we try to convert to V2.  
+![Backwards 2](Resources/Basics/SS_ProjSettings_Backwards-2.JPG)  
