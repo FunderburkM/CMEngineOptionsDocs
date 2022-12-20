@@ -2,22 +2,28 @@
 
 Documentation for the Universal Options Marketplace Plugin, V2! Available for Unreal Engine 5.  
 
-[Unreal Marketplace Profile](https://www.unrealengine.com/marketplace/en-US/profile/M+Funderburk)  
+[Unreal Marketplace Profile](https://www.unrealengine.com/marketplace/en-US/profile/M+Funderburk).  
+[Discord Server](https://discord.gg/QHTTMQ6Pqw).  
 
 [For documentation on v1.x version of this plugin, visit this branch.](https://github.com/FunderburkM/CMEngineOptionsDocs/tree/V1-Docs)  
 
+
+![Image](/Resources/Game/SS_Graphics_UI.JPG)  
+
 ---  
 
-This Readme focuses on the basic elements. For more information, please refer to the following pages:  
+This Readme focuses on the basic elements like plugin enabling, content location, and project settings. For more information, please refer to the following pages:  
 
+* [Getting Started](/GettingStarted.md)  
 * [How Settings Work](/HowSettingsWork.md)  
 * [Working With the Settings System](/WorkingWithTheSettingsSystem.md)  
 * [Understanding Assets](/UnderstandingAssets.md)  
 * [Working with Widgets](/WorkingWithWidgets.md)  
+* [Creating your own Game Setting](/CreatingYourOwnGameSettings.md)  
 
 ## Content
 
-The Plugin's technical name is `CM_Engine_Options`, and its friendly name is `Universal Options`.  
+The Plugin's technical name is `CM_Engine_Options`, and its friendly name is `Universal Options`. Finding the plugin by folder will be using its technical name, either `CM_Engine_Options`, or `CMEngineOptions`, whilst its display name inside the editor will follow its friendly name.    
 
 To enable the plugin, go to Plugins window and search for Universal Options and enable the plugin.  
 ![Plugin Window](Resources/Basics/SS_PluginWindow.JPG)  
