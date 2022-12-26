@@ -123,12 +123,15 @@ bool UMyGameSettings::ParseSetData_Implementation(const FString& FieldName, cons
     return true;
   }
   //
-  const TArray<TSharedPtr<FJsonValue>>* Array;
-  if (InJsonData.JsonObject->TryGetArrayField(TEXT("Heroes"), Array))
+  if (FieldName == TEXT("Heroes"))
   {
-    //This is a utility function that converts to an TArray<a struct with our UO_FROM_JSON functions from a json value array>
-    UUOJsonUtilities::MakeArrayFromJson(AvailableHeroes, Array);
-    return true;
+    const TArray<TSharedPtr<FJsonValue>>* Array;
+    if (InJsonData.JsonObject->TryGetArrayField(TEXT("Heroes"), Array))
+    {
+      //This is a utility function that converts to an TArray<a struct with our UO_FROM_JSON functions from a json value array>
+      UUOJsonUtilities::MakeArrayFromJson(AvailableHeroes, Array);
+      return true;
+    }
   }
   return false;
 }
