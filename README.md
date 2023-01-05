@@ -16,4 +16,4 @@ Documentation for the Universal Options Marketplace Plugin, V2! Available for Un
 
 [For documentation on v1.x version of this plugin, visit this branch.](https://github.com/FunderburkM/CMEngineOptionsDocs/tree/V1-Docs)  
 
-![Image](/Resources/V1_Widgets.JPG)  
+![Image](/Resources/V1_Widgets.jpg)  
