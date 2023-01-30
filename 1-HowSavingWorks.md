@@ -58,6 +58,8 @@ TMap<FString, FMyStruct> MyStructMap;
 
 Make sure that your Settings class has, either in defaults or Instanced Settings, `bEnableProcessSaveGameProperties` set to true!  
 
+![Image](/Resources/Assets/SS_SettingsAsset_EnableSaveGame.JPG)  
+
 Whenever Save Game Property saving is supported, you also have the option to do a deep check of what you'd like to share with `bEnableDeepAnalysisOfSaveGameProperties`. Take the example:  
 
 ```text

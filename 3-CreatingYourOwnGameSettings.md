@@ -12,11 +12,22 @@ With the type created, let's go over a few things. The `why` of this is explaine
 
 ![image](/Resources/Framework/SS_TestGame_Defaults-tag.JPG)  
 
+## Automated vs Manual Support Notes
+
+This entire process has been significantly simplified in v2.1+, where you can now register data by simply marking it SaveGame.  
+
+First, make sure that SaveGame support is enabled:  
+![Image](/Resources/Assets/SS_SettingsAsset_EnableSaveGame.JPG)  
+
+Then, simply tag your property as `SaveGame`. That's it! no need to implement/Modify `MakeDefaultValuesToJson` nor `SynchronizeData` nor `SetData` nor `ParseSetData`!  
+
+[More information here](/1-HowSavingWorks.md#automatic-addition).  
+
+## Manual Implementation Sample
+
 For showcase purporses, we'll duplicate the setup of the test game settings included in the plugin. We'll be testing with a blueprint struct S_UO_HeroSettings, and make an Array Property of this struct.  
 
 ![Image](/Resources/Framework/SS_TestGame_Defaults.JPG)  
-
-> **Note**: This entire process has been significantly simplified in v2.1+, where you can now register data by simply marking it SaveGame.  
 
 Now, we'll need to override two basic functions `MakeDefaultValuesToJson` and `SynchronizeData`. Make sure that for both of them, you call Super (C++)/Parent (BP)!  
 
@@ -87,9 +98,8 @@ FJsonObjectWrapper UMyGameSettings::MakeDefaultValuesToJson_Implementation() con
 {
   FJsonObjectWrapper Result = Super::MakeDefaultValuesToJson_Implementation();
 
-  TArray<TSharedPtr<FJsonValue>> Array;
-  UUOJsonUtilities::MakeJsonArray(AvailableHeroes, &Array);
-  Result.JsonObject->SetArrayField(gameSettings, Array);
+  UO_SET_FIELD(Result, TEXT("Heroes"), AvailableHeroes);
+
   return Result;
 }
 
@@ -100,20 +110,11 @@ bool UMyGameSettings::SynchronizeData_Implementation(FJsonObjectWrapper& InJsonD
 
   if (DataOperation == EUODataOperation::SynchronizePending)
   {
-    TArray<TSharedPtr<FJsonValue>> Array;
-    //This is a utility function that converts a TArray<a struct with our UO_TO_JSON functions to a json value array>
-    UUOJsonUtilities::MakeJsonArray(AvailableHeroes, &Array);
-
-    InJsonData.JsonObject->SetArrayField(TEXT("Heroes"), Array);
+    UO_SET_FIELD(InJsonData, TEXT("Heroes"), AvailableHeroes);
   }
   else
   {
-    const TArray<TSharedPtr<FJsonValue>>* Array;
-    if (InJsonData.JsonObject->TryGetArrayField(TEXT("Heroes"), Array))
-    {
-      //This is a utility function that converts to an TArray<a struct with our UO_FROM_JSON functions from a json value array>
-      UUOJsonUtilities::MakeArrayFromJson(AvailableHeroes, Array);
-    }
+    UO_GET_FIELD(InJsonData, TEXT("Heroes"), AvailableHeroes);
   }
   return true;
 }
@@ -127,13 +128,7 @@ bool UMyGameSettings::ParseSetData_Implementation(const FString& FieldName, cons
   //
   if (FieldName == TEXT("Heroes"))
   {
-    const TArray<TSharedPtr<FJsonValue>>* Array;
-    if (InJsonData.JsonObject->TryGetArrayField(TEXT("Heroes"), Array))
-    {
-      //This is a utility function that converts to an TArray<a struct with our UO_FROM_JSON functions from a json value array>
-      UUOJsonUtilities::MakeArrayFromJson(AvailableHeroes, Array);
-      return true;
-    }
+    UUOJsonUtilities::FromJsonValue(InputValue, AvailableHeroes);
   }
   return false;
 }

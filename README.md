@@ -16,7 +16,7 @@ Documentation for the Universal Options Marketplace Plugin, V2! Available for Un
 This Readme focuses on the basic elements like plugin enabling, content location, and project settings. For more information, please refer to the following pages:  
 
 * 0) [Version Changelog](/0-ChangeLog.md)  
-* 1) [Getting Started](/0-GettingStarted.md)  
+* 1) [Getting Started](/1-GettingStarted.md)  
 * 1) [How Settings Work](/1-HowSettingsWork.md)  
 * 1) [How Saving Works](/1-HowSavingWorks.md)  
 * 1) [Understanding Assets](/1-UnderstandingAssets.md)  
