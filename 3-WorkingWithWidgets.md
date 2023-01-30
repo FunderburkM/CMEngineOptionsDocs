@@ -25,10 +25,10 @@ To show this see the image above, the buttons on the left come from this class, 
 
 Next up, we have **System Display Names**. This is used for the section Menu Widget class' text display name as seen in the image above. You can specify the names of each section as well as your active game setting sections.  
 
-### Per Setting Type Widget Settings 
+### Per Setting Type Widget Settings
 
 Our Graphic Settings Asset contains the main widget class to use for our `UUOWidgetGraphicSettings`,the Text Settings for displaying our Graphic Quality, Types, and Window mode. We also choose the Graphic Type widget and which Graphic Types to generate widgets for. In the future, we'd be looking at adding more options for better modularity.  
-![Graphics](/Resources/Widgets/SS_GraphicsWidget_Settings.JPG) 
+![Graphics](/Resources/Widgets/SS_GraphicsWidget_Settings.JPG)  
 
 Our Input Settings asset also contains the main widget class of type `UUOWidgetInputSettings`, and the `UUOWidgetInputRow` class to show for rebinding options. This will be even more important when Enhanced input rebinding support is added soon.  
 You also get settings for Messages such as binding key open as well as failed messages.  
@@ -38,7 +38,7 @@ Sound Settings for now are quite simple, they let you choose the `UUOWidgetSound
 
 Game Settings Widget require a bit more understanding, so let's go through a couple of things:  
 
-You select which Game Setting Assets to be present by the Tag to Game Widget Settings Map. This Tag will represent the game settings that it is able to query.   
+You select which Game Setting Assets to be present by the Tag to Game Widget Settings Map. This Tag will represent the game settings that it is able to query.  
 ![game settings](/Resources/Widgets/SS_GameWidget_Settings.JPG)  
 
 You select the main Widget class by `UUOWidgetGameSettings` to act as your processor and then proceed to choose the given `JSON` paths. For example for our `V1 Settings` included as test we have the `boolean` variable `bIsPermadeath` and a `vector2D` variable `MouseMultipliers`.  

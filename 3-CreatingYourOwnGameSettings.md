@@ -16,6 +16,8 @@ For showcase purporses, we'll duplicate the setup of the test game settings incl
 
 ![Image](/Resources/Framework/SS_TestGame_Defaults.JPG)  
 
+> **Note**: This entire process has been significantly simplified in v2.1+, where you can now register data by simply marking it SaveGame.  
+
 Now, we'll need to override two basic functions `MakeDefaultValuesToJson` and `SynchronizeData`. Make sure that for both of them, you call Super (C++)/Parent (BP)!  
 
 In MakeDefaultValuesToJson, we add the values that we want to be considered as Defaults, so we'll be setting the field `Heroes` to be our struct array.  

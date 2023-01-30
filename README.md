@@ -9,23 +9,25 @@ Documentation for the Universal Options Marketplace Plugin, V2! Available for Un
 [For documentation on v2.1 version of this plugin, visit this branch.](https://github.com/FunderburkM/CMEngineOptionsDocs/tree/V2.1-Docs)  
 [For documentation on v1.x version of this plugin, visit this branch.](https://github.com/FunderburkM/CMEngineOptionsDocs/tree/V1-Docs)  
 
-
 ![Image](/Resources/Game/SS_Graphics_UI.JPG)  
 
 ---  
 
 This Readme focuses on the basic elements like plugin enabling, content location, and project settings. For more information, please refer to the following pages:  
 
-* [Getting Started](/GettingStarted.md)  
-* [How Settings Work](/HowSettingsWork.md)  
-* [Working With the Settings System](/WorkingWithTheSettingsSystem.md)  
-* [Understanding Assets](/UnderstandingAssets.md)  
-* [Working with Widgets](/WorkingWithWidgets.md)  
-* [Creating your own Game Setting](/CreatingYourOwnGameSettings.md)  
+* 0) [Version Changelog](/0-ChangeLog.md)  
+* 1) [Getting Started](/0-GettingStarted.md)  
+* 1) [How Settings Work](/1-HowSettingsWork.md)  
+* 1) [How Saving Works](/1-HowSavingWorks.md)  
+* 1) [Understanding Assets](/1-UnderstandingAssets.md)  
+* 1) [Working With the Settings System](/1-WorkingWithTheSettingsSystem.md)  
+* 1) [Working with JSON](/1-WorkingWithJson.md)  
+* 2) [Working with Widgets](/3-WorkingWithWidgets.md)  
+* [Creating your own Game Setting](/3-CreatingYourOwnGameSettings.md)  
 
 ## Content
 
-The Plugin's technical name is `CM_Engine_Options`, and its friendly name is `Universal Options`. Finding the plugin by folder will be using its technical name, either `CM_Engine_Options`, or `CMEngineOptions`, whilst its display name inside the editor will follow its friendly name.    
+The Plugin's technical name is `CM_Engine_Options`, and its friendly name is `Universal Options`. Finding the plugin by folder will be using its technical name, either `CM_Engine_Options`, or `CMEngineOptions`, whilst its display name inside the editor will follow its friendly name.  
 
 To enable the plugin, go to Plugins window and search for Universal Options and enable the plugin.  
 ![Plugin Window](Resources/Basics/SS_PluginWindow.JPG)  
@@ -48,7 +50,7 @@ For V2 loading settings, we declare our functionality at the data asset level. H
 
 ### Initialization Settings
 
-You can specify in which circumstances should modules get disabled. For example, while testing in Editor, you may not want the input system to automatically load rebinding input settings.  
+You can specify in which circumstances should modules get disabled. For example, while testing in Editor or in debug mode, you may not want the graphic system to automatically load and apply graphical settings.  
 ![Initiation](Resources/Basics/SS_ProjSettings_Init.JPG)  
 ![Initiation2](Resources/Basics/SS_ProjSettings_Init2.JPG)  
 
