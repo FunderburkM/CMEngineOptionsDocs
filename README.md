@@ -22,8 +22,9 @@ This Readme focuses on the basic elements like plugin enabling, content location
 * 1) [Understanding Assets](/1-UnderstandingAssets.md)  
 * 1) [Working With the Settings System](/1-WorkingWithTheSettingsSystem.md)  
 * 1) [Working with JSON](/1-WorkingWithJson.md)  
-* 2) [Working with Widgets](/3-WorkingWithWidgets.md)  
-* [Creating your own Game Setting](/3-CreatingYourOwnGameSettings.md)  
+* 2) [Game Settings](/2-GameSettings.md), [Graphic Settings](/2-GraphicsSettings.md), [Input Settings](/2-InputSettings.md), [Sound Settings](/2-SoundSettings.md)  
+* 3) [Working with Widgets](/3-WorkingWithWidgets.md)  
+* 3) [Creating your own Game Setting](/3-CreatingYourOwnGameSettings.md)  
 
 ## Content
 
