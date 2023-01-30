@@ -96,27 +96,15 @@ In C++, you can check our utility functions in `UUOJsonUtilities`, but most of t
 
 > [You can check V2.0's page on working directly with JsonValues, with V2.1+ you don't need to interact directly with them most of the time](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/V2.0-Docs/1-WorkingWithJson.md#working-with-json-values).  
 
-You usually create shared instances of the objects, for example:  
+You can now just convert from and to with our templated functions in `UUOJsonUtilities`.  
 
 ```cpp
-//Creating an Array
-TArray<TSharedPtr<FJsonValue>> TheJsonValueArray = {Some Valid Value};
-TSharedPtr<FJsonValue> TheJsonValue = MakeShared<FJsonValueArray>(TheJsonValueArray);
+template<typename T>
+static bool FromJsonValue(const TSharedPtr<FJsonValue>& Input, T& OutValue);
 
-//Creating an Object
-TSharedPtr<FJsonObject> TheJsonObject = {Some Valid Value}; 
-TSharedPtr<FJsonValue> TheJsonValue = MakeShared<FJsonValueObject>(TheJsonObject); 
-
-//Creating Primitive types
-//Some Number can be signed/unsigned integers, floats, double
-double SomeNumber = 42;
-TSharedPtr<FJsonValue> TheJsonValue = MakeShared<FJsonValueNumber>(SomeNumber);
-bool bSomeBoolean = true;
-TSharedPtr<FJsonValue> TheJsonValue = MakeShared<FJsonValueBoolean>(bSomeBoolean);
-FString SomeFString = TEXT("Hello");
-TSharedPtr<FJsonValue> TheJsonValue = MakeShared<FJsonValueString>(SomeFString);
+template<typename T>
+static TSharedPtr<FJsonValue> ToJsonValue(const T& Value);
 ```
-
 
 In Blueprints, you can check the functionality mentioned above from Epic's custom nodes from `Json Blueprint Utilities`, or if you want to work with `FUOJsonValue`, you can check our `UUOJsonBPUtilities`  
 ![Search](/Resources/Framework/SS_Graph_JsonValue.JPG)  
