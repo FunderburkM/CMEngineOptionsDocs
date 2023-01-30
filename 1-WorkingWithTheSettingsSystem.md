@@ -90,16 +90,26 @@ The basics of `JSON Paths` is overviewed in the [How Settings Work](/HowSettings
 Here's an example for how you can use this: Say that you want to access the Current Graphics Active Profile's Name.  
 ![Get Data Graphics](/Resources/Framework/SS_Graph_GetData_Graphics.JPG)  
 
+> **Note**: In V2.1+, you don't need to FromJsonValue(To Type) anymore, you can convert it to your desired type in the call itself.  
+> We have also added Get Subsystem Data, combining two calls into one.  
+
+![Image](/Resources/Framework/SS_Graph_GetData_v21.JPG)  
+
 How you decide to work with these is up to you, this just showcasing how you can operate with them.  
 
 #### Writing Data
 
 `UUOSettingsBase::SetData()`.  
 
+**Writing Data to Automatically Added Properties via SaveGame do not need any custom functionality inside `ParseSetData`**.  
+
+![Image](/Resources/Framework/SS_Graph_SetData.JPG).  
+
+**For Manually added properties, please check the following:**  
+
 `SetData()`'s support is up to the specific Setting Class' `UUOSettingsBase::ParseSetData` implementation.  
 
 > **Note**: Our base C++ classes don't implement this, so we encourage to use specialized functions (for example, `UUOGraphicsSettings::SetGamma()`) when available.  
-> **Note**:  V2.1 now provides automatic UPROPERTY with SaveGame tagging to be supported by SetData without overriding.  
 
 We include an example for working with this inside our V1 Test Game settings:  
 ![Parse Set Data](/Resources/Framework/SS_V1Game_ParseData.JPG)  

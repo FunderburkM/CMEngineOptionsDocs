@@ -32,67 +32,58 @@ For our plugin, we use this with `FUOJsonPath`. More specifics in [Working with 
 
 ## Workflow
 
-In C++, we recommend checking our `UUOJsonUtilities` Function library. Your ustructs can just drop to have the conversion functions ready to go.  
-
-```cpp
-UO_TO_JSON();
-UO_TO_JSONVALUE();
-UO_FROM_JSON();
-```
-
-> Note: V2.1 doesn't need to add these functions anymore, and are now an optional method for specifying json reading/writing that does not depend on UPROPERTY.  
-
 ### Working with JSON Objects
 
 You can check FJsonObject's documentation [here](https://docs.unrealengine.com/4.27/en-US/API/Runtime/Json/Dom/FJsonObject/), and FJsonObjectWrapper's documentation [here](https://docs.unrealengine.com/4.27/en-US/API/Runtime/JsonUtilities/FJsonObjectWrapper/).  
 
-In C++, using the utility functions, for example when working with arrays:  
-
-> Note: V2.1 has completely changed working with JSON in C++  
+In C++, using UUOJsonUtilities, all functions and macros have been reduced to two actions:  
 
 ```cpp
-//from struct to json
-TArray<TSharedPtr<FJsonValue>> Array;
-UUOJsonUtilities::MakeJsonArray(LegacyGameSettings, &Array);
-InJsonData.JsonObject->SetArrayField(gameSettings, Array);
 
-//from json to struct
-const TArray<TSharedPtr<FJsonValue>>* Array;
-if (InJsonData.JsonObject->TryGetArrayField(gameSettings, Array))
-{
-    UUOJsonUtilities::MakeArrayFromJson(LegacyGameSettings, Array);
-}
+template<typename T>
+static bool GetField(TSharedPtr<FJsonObject> or FJsonObjectWrapper, FieldName, T& OutValue)
+
+template<typename T>
+static void SetField(TSharedPtr<FJsonObject> or FJsonObjectWrapper, FieldName, const T& InValue)
+
+UO_GET_FIELD(JsonObject, FieldName, Output)
+UO_SET_FIELD(JsonObject, FieldName, Input)
 ```
 
-Generally speaking:  
+for both Get Field and Set Field, these functions support primitives, FName/FString, Structures, FProperty*, Arrays, Maps, and even types with custom methods!
 
 ```cpp
-//to access the json object inside the wrapper
-TheJsonWrapperObject.JsonObject;
-//so for example
-if (TSharedPtr<FJsonValue> JsonValue = TheJsonWrapperObject.JsonObject.TryGetField("theNameOfMyField"))
+
+int32 Output;
+//float Output;
+//FString Output;
+//FName Output;
+//FMyStruct Output;
+//TArray<FMyStruct> Output;
+//TMap<FString, FMyStruct> Output; //or TMap<FString, int32, etc>
+//FUOJsonValue Output;
+//TSharedPtr<FJsonObject> Output;
+//TSharedPtr<FJsonValue> Output;
+//FJsonSerializable Output;
+if (UO_GET_FIELD(JsonObject, TEXT("myField"), Output))
 {
-    //do something with this.
+
 }
 
-//for writing, you just do 
-TheJsonWrapperObject.JsonObject->SetField(TEXT("theNameOfMyField"), AJsonValue);
+UO_SET_FIELD(JsonObject, TEXT("myField"), FVector(50.f, 55.f, 65.f));
 
-//you can also do specific queries, like for reading
-bool bThebool;
-if (TheJsonWrapperObject.JsonObject->TryGetBoolField(TEXT("theNameOfMyField")))
-{
-    //if you're looking for a value paired to "theNameOfMyField" to be of a specific type.
-}
-
-//and for writing
-TheJsonWrapperObject.JsonObject->SetBoolField(TEXT("theNameOfMyField"), true);
-
-//More information 
-//https://docs.unrealengine.com/4.27/en-US/API/Runtime/Json/Dom/FJsonObject/
 ```
 
-More information on how to use GetField functions and SetField functions, check the `FJsonValue` below in the JSON value section.  
+for structs and custom classes (non-uclasses), you can also implement your own functions! if your UStructs don't have these functions declared, it'll use the engine's default JSON-ToStruct and Struct-ToJson functionality.  
+
+```cpp
+TSharedPtr<FJsonObject> ToJson() const;
+TSharedPtr<FJsonValue> ToJsonValue() const;
+bool FromJson(const TSharedPtr<FJsonObject>& Input); 
+```
+
+You can still work with our settings using V2.0's and the engine's default methods.  
+> [Please check V2.0's page on Json default workflow](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/V2.0-Docs/1-WorkingWithJson.md#working-with-json-objects).
 
 In Blueprints, you can either work with our `FUOJsonValue` (check the section below) and convert things to json value before interacting with `JSON` objects, or you can use the default functionality in the engine's `Json Blueprint Utilities` plugin  
 ![Json Object](/Resources/Framework/SS_Graph_JsonObject.JPG)  
@@ -102,6 +93,8 @@ In Blueprints, you can either work with our `FUOJsonValue` (check the section be
 You can check [this documentation page](https://docs.unrealengine.com/4.27/en-US/API/Runtime/Json/Dom/) for information on Json Values and how they operate.  
 
 In C++, you can check our utility functions in `UUOJsonUtilities`, but most of the functionality related to values is in our struct wrapper `FUOJsonValue`, a wrapper for `TSharedPtr<FJsonValue>`.  
+
+> [You can check V2.0's page on working directly with JsonValues, with V2.1+ you don't need to interact directly with them most of the time](https://github.com/FunderburkM/CMEngineOptionsDocs/blob/V2.0-Docs/1-WorkingWithJson.md#working-with-json-values).  
 
 You usually create shared instances of the objects, for example:  
 
@@ -124,18 +117,6 @@ FString SomeFString = TEXT("Hello");
 TSharedPtr<FJsonValue> TheJsonValue = MakeShared<FJsonValueString>(SomeFString);
 ```
 
-Then you can set that value as a field:  
-
-```cpp
-//Say that we have a json wrapper
-InJsonWrapper.JsonObject->SetField(TEXT("theNameOfMyField"), TheJsonValue);
-```
-
-Or save yourself the trouble of doing `MakeShared<>` manually by using one of `FJsonObject`'s functions. For example doing it from SomeNumber would just be:  
-
-```cpp
-InJsonWrapper.JsonObject->SetNumberField(TEXT("theNameOfMyField"), SomeNumber);
-```
 
 In Blueprints, you can check the functionality mentioned above from Epic's custom nodes from `Json Blueprint Utilities`, or if you want to work with `FUOJsonValue`, you can check our `UUOJsonBPUtilities`  
 ![Search](/Resources/Framework/SS_Graph_JsonValue.JPG)  

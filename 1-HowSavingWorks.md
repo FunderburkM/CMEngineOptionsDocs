@@ -40,7 +40,39 @@ Here, we are going to be demonstrating working with a custom struct, `S_UO_HeroS
 
 ### Automatic Addition
 
-This feature is supported starting on Universal Options 2.1.  
+You can now add support to any of your Properties (non-object) by tagging it with SaveGame. Make sure that you didn't tag it as Transient!  
+
+```cpp
+//Supports any primitives, FName and FString, as well as Enumerators
+UPROPERTY(SaveGame)
+bool bMySavedBoolean = false;
+
+//Supports any USTRUCT structures, check "1-Working with JSON" for more information
+UPROPERTY(SaveGame)
+TArray<FMyStruct> MyStructArray;
+
+//Can also save maps that can convert its key type to a string, such as primitives, strings, and Gameplay Tags. 
+UPROPERTY(SaveGame)
+TMap<FString, FMyStruct> MyStructMap;
+```
+
+Make sure that your Settings class has, either in defaults or Instanced Settings, `bEnableProcessSaveGameProperties` set to true!  
+
+Whenever Save Game Property saving is supported, you also have the option to do a deep check of what you'd like to share with `bEnableDeepAnalysisOfSaveGameProperties`. Take the example:  
+
+```text
+Say you have the following structure
+USTRUCT() struct FMyStruct { UPROPERTY(SaveGame) bool bMyBool, UPROPERTY() float MyFloat }
+
+and then in our settings object,
+UPROPERTY(SaveGame) FMyStruct StructVar
+
+bEnableDeepAnalysisOfSaveGameProperties = false means that when we run ToJson(StructVar), where both bMyBool and MyFloat get turned into Json,
+{ "bMyBool" : false, "MyFloat" : 42 }
+
+bEnableDeepAnalysisOfSaveGameProperties = true true means we do a recursive check inside FMyStruct, and only bMyBool would get turned into Json.  
+{ "bMyBool" : false }
+```
 
 ### Manual Addition
 

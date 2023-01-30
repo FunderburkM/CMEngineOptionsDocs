@@ -34,11 +34,11 @@ Rebind Standard Input interacts with the Engine's regular Input System, which yo
 The Input Asset contains  
 
 * `Input Binding Display Options` used by widgets, it lets us define the text values for each binding, both action and axis.  
-* `Input Layouts` control the main element on binding (more below)  
+* `Input Layouts` control the main element on binding  
 * `Input Profile` controls which input profile should be active by default when not loaded by save game  
 * `Non Rebindable Keys` establishes with Keys (Gamepad Left, Global Back, Escape Button, etc) cannot be accepted for rebinding.  
 * `Non Rebindable Mappings` establishes with mappings (by Name, so say "Escape" action binding) cannot be opened for rebinding.  
-* `Input Profiles` establishes the settings for each individual input profile (more below)  
+* `Input Profiles` establishes the settings for each individual input profile  
 
 ![Input Asset](/Resources/Assets/SS_InputStandardAsset_Default.JPG)
 
@@ -46,8 +46,29 @@ ___
 
 ## Enhanced Input
 
-Enhanced Rebinding is available in v2.1+.  
+### EI Features
 
+* Rebinding Functionality supporting Enhanced Input  
+* Input Profiles for Input contexts and Mappable Configs  
+* Smart Detection of External Updating of the System  
+
+#### EI Input Profiles
+
+### EI Instanced Settings
+
+The settings at the default asset level dictate which standard input asset to use and which features are enabled.  
+![Image](/Resources/Assets/SS_SettingsAsset_InputEnhanced.jpg)  
+
+The Input asset Contains  
+
+* `Input Profile Layout Settings` controls the potential allowed keys and their display options.  
+* `Allowed Input Contexts For Rebinding` gives the allowed list to rebind from. The Value element of the map (the boolean) controls whether it should be shown to the Widgets.  
+* `Profile Name` controls which input profile should be active by default when not loaded by save game  
+* `Non Rebindable Keys` establishes with Keys (Gamepad Left, Global Back, Escape Button, etc) cannot be accepted for rebinding.  
+* `Non Rebindable Mappings` establishes with mappings (by Name, so say "Escape" action binding) cannot be opened for rebinding.  
+* `Input Profiles` establishes the settings for each individual input profile  
+
+![Input Asset](/Resources/Assets/SS_InputEnhancedAsset.JPG)  
 ___  
 
 ## Functionality
