@@ -48,7 +48,6 @@ Jan 2023
 V2.2  
 July 2023  
 
-V2.2  
 New & Improvements:  
 
 * Added support for new Graphic Quality types:  
@@ -58,7 +57,7 @@ New & Improvements:
 * Widget settings now automatically detect the first available system and switch to that instead of a hard coded tag  
 * Widget settings improved visibility  
 * Graphic, Audio, and Universal Settings UX improvements, availability and query functions added  
-* Added Platform Settings, [check here](/2-PlatformSettings.md)  
+* Added Platform Settings  
 * Added Platform Simulation and Detection Settings  
 * Audio and Graphic Settings now have ensure config validation when loading from save file  
 * Graphic Settings can now be overridden per platform  
