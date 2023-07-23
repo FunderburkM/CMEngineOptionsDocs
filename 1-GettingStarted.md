@@ -10,12 +10,15 @@ ___
 
 As mentioned in [Readme](/README.md), all our settings get loaded by the Settings Asset. We recommend checking [the Readme's section on project settings](/README.md#loading-settings). This Settings asset contains the setting configurations for:  
 
+* Platform Settings  
 * Graphic Settings  
 * Sound Settings  
 * Input Settings  
 * Game Settings  
 
-Graphic, Sound, and Input settings are established via their respective Data assets for configurations while the Game Settings framework expects the user to extend their classes and define the data and logic as they require. You can find more information about our data assets and default settings [here](/1-UnderstandingAssets.md). These are particularly important for our Game Settings framework, where you can define your saving types and then identify the system speifically.  
+[Platform Settings](/2-PlatformSettings.md) provides the opportunity to set specific overrides for base functionality. In v2.2, we've added options relating to auto detect, vscync, and graphic quality settings, alongside with widget display settings. More extensive platform settings for input and audio may come in future versions depending on user requests.  
+
+Graphic, Sound, and Input settings are established via their respective Data assets for configurations while the Game Settings framework expects the user to extend their classes and define the data and logic as they require. You can find more information about our data assets and default settings [here](/1-UnderstandingAssets.md). These are particularly important for our Game Settings framework, where you can define your saving types and then identify the system specifically.  
 
 ![Image](/Resources/Framework/SS_SettingsAsset_Minimzed.JPG)  
 

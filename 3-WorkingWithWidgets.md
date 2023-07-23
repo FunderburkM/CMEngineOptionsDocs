@@ -12,6 +12,8 @@ To make your own Widget Settings asset, click Add -> Miscellaneous -> Data Asset
 
 Our `UUOWidgetGlobalSettings` class spawns and registers its subelements based on the active Global Widget settings Asset referenced by our [Loaded Settings Asset](/README.md#loading-settings). Before going deeper into this, let's overview what the `UUOGlobalWidgetSettings` asset has in store.  
 
+> NOTE: In v2.2+, you can also control which widget settings get spawned via our [Platform Settings](/2-PlatformSettings.md).  
+
 **Global Settings Widget class** is the type of `UUOWidgetGlobalSettings` class selected to fetch when doing  
 ![Image](/Resources/Widgets/SS_Graph_GetGlobalWidget.JPG)  
 

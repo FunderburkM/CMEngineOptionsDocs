@@ -8,6 +8,8 @@
 * Enforce Framerate and Monitor Synchronization  
 * Switch Active Monitors (v2.1+)  
 
+> NOTE: In v2.2+, you now have the ability to set platform-specific overrides and controls. For more information, check [here](/2-PlatformSettings.md).  
+
 ## Instanced Settings
 
 ![Graphics](/Resources/Assets/SS_SettingsAsset_Graphics.JPG)  

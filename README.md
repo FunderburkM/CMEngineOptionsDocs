@@ -3,11 +3,11 @@
 [Unreal Marketplace Profile](https://www.unrealengine.com/marketplace/en-US/profile/M+Funderburk).  
 [Discord Server](https://discord.gg/QHTTMQ6Pqw).  
 
-Documentation for the Universal Options Marketplace Plugin, V2! Available for Unreal Engine 5.  
+Documentation for the Universal Options Marketplace Plugin, V2.2! Available for Unreal Engine 5.1 and 5.2.  
 
 **These Docs are for Universal Options V2.1**.  
 [For documentation on v2.0 version of this plugin, visit this branch.](https://github.com/FunderburkM/CMEngineOptionsDocs/tree/V2.0-Docs)  
-[For documentation on v1.x version of this plugin, visit this branch.](https://github.com/FunderburkM/CMEngineOptionsDocs/tree/V1-Docs)  
+[For documentation on v2.1 version of this plugin, visit this branch.](https://github.com/FunderburkM/CMEngineOptionsDocs/tree/V2.1-Docs)  
 
 ![Image](/Resources/Game/SS_Graphics_UI.JPG)  
 
@@ -22,6 +22,7 @@ This Readme focuses on the basic elements like plugin enabling, content location
 * 1) [Understanding Assets](/1-UnderstandingAssets.md)  
 * 1) [Working With the Settings System](/1-WorkingWithTheSettingsSystem.md)  
 * 1) [Working with JSON](/1-WorkingWithJson.md)  
+* 2) [Platform Settings](/2-PlatformSettings.md)  
 * 2) [Game Settings](/2-GameSettings.md), [Graphic Settings](/2-GraphicsSettings.md), [Input Settings](/2-InputSettings.md), [Sound Settings](/2-SoundSettings.md)  
 * 3) [Working with Widgets](/3-WorkingWithWidgets.md)  
 * 3) [Creating your own Game Setting](/3-CreatingYourOwnGameSettings.md)  
@@ -54,6 +55,10 @@ For V2 loading settings, we declare our functionality at the data asset level. H
 You can specify in which circumstances should modules get disabled. For example, while testing in Editor or in debug mode, you may not want the graphic system to automatically load and apply graphical settings.  
 ![Initiation](Resources/Basics/SS_ProjSettings_Init.JPG)  
 ![Initiation2](Resources/Basics/SS_ProjSettings_Init2.JPG)  
+
+#### Platform Simulation Settings
+
+In 2.2+, we now have platform simulation settings. You can check those docs [here](/2-PlatformSettings.md).  
 
 ### Backwards Compatibility
 
