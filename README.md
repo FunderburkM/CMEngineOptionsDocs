@@ -7,7 +7,7 @@ Documentation for the Universal Options Marketplace Plugin, V2! Available for Un
 
 ## V2 Docs
 
-[For documentation on v2.2 version of this plugin, visit this branch.](https://github.com/FunderburkM/CMEngineOptionsDocs/tree/V2.2-Docs) 
+[For documentation on v2.2 version of this plugin, visit this branch.](https://github.com/FunderburkM/CMEngineOptionsDocs/tree/V2.2-Docs)  
 [For documentation on v2.1 version of this plugin, visit this branch.](https://github.com/FunderburkM/CMEngineOptionsDocs/tree/V2.1-Docs)  
 [For documentation on v2.0 version of this plugin, visit this branch.](https://github.com/FunderburkM/CMEngineOptionsDocs/tree/V2.0-Docs)  
 
