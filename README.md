@@ -3,11 +3,12 @@
 [Unreal Marketplace Profile](https://www.unrealengine.com/marketplace/en-US/profile/M+Funderburk).  
 [Discord Server](https://discord.gg/QHTTMQ6Pqw).  
 
-Documentation for the Universal Options Marketplace Plugin, V2.2! Available for Unreal Engine 5.1 and 5.2.  
+Documentation for the Universal Options Marketplace Plugin, V2.3! Available for Unreal Engine 5.1 and above.  
 
-**These Docs are for Universal Options V2.1**.  
+**These Docs are for Universal Options V2.3**.  
 [For documentation on v2.0 version of this plugin, visit this branch.](https://github.com/FunderburkM/CMEngineOptionsDocs/tree/V2.0-Docs)  
 [For documentation on v2.1 version of this plugin, visit this branch.](https://github.com/FunderburkM/CMEngineOptionsDocs/tree/V2.1-Docs)  
+[For documentation on v2.2 version of this plugin, visit this branch.](https://github.com/FunderburkM/CMEngineOptionsDocs/tree/V2.2-Docs) 
 
 ![Image](/Resources/Game/SS_Graphics_UI.JPG)  
 
@@ -23,6 +24,7 @@ This Readme focuses on the basic elements like plugin enabling, content location
 * 1) [Working With the Settings System](/1-WorkingWithTheSettingsSystem.md)  
 * 1) [Working with JSON](/1-WorkingWithJson.md)  
 * 2) [Platform Settings](/2-PlatformSettings.md)  
+* 2) [System Settings](/2-SystemSettings.md)  
 * 2) [Game Settings](/2-GameSettings.md), [Graphic Settings](/2-GraphicsSettings.md), [Input Settings](/2-InputSettings.md), [Sound Settings](/2-SoundSettings.md)  
 * 3) [Working with Widgets](/3-WorkingWithWidgets.md)  
 * 3) [Creating your own Game Setting](/3-CreatingYourOwnGameSettings.md)  
@@ -43,6 +45,13 @@ Inside `v2 Content`, we'll see our main Data assets for settings and widget sett
 ![V2 Content](Resources/Basics/SS_ContentBrowser_V2Content.JPG)  
 
 ## Loading Settings
+
+### Loading Important Settings
+
+As of v2.3, we recommend using `UOSettings_Defaults_v2-3` data asset instead of `UOSettings_default`.   
+![Updated Asset](/Resources/Basics/SS_ProjSettings_Loading_Update.JPG)  
+
+### Loading Settings Basics
 
 Before we continue, let's explain how to find them. Go to your Project Settings, and scroll down to Plugins section. `Universal Options (Deprecated)` is for the V1.x settings, and `Universal Options` is for our active settings.  
 ![Plugin Bar](Resources/Basics/SS_ProjSettings_Bar.jpg)  

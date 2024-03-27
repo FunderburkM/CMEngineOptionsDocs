@@ -44,4 +44,15 @@ if (UUOGraphicSettings* Settings = UUOGraphicSettings::Get(this))
 }
 ```  
 
+You can now also set all the information by just json data and establish the information that way.  
+
+```cpp
+
+if (auto* Settings = UUOGraphicSettings::Get(this))
+{
+  Settings->SetData("$.ScreenData.bVSyncIsOn", FUOJsonValue(true), UUOCoreHelper::GetEvent_ApplySave());
+}
+```
+
+
 By Default, The Graphics Functionality at runtime is triggered by the Active Graphic Settings Widget.  

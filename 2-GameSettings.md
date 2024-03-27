@@ -9,6 +9,10 @@
 
 The settings for Game work on establishing a Gameplay Tag map pointing to an instanced object of `UOGameSettings` type. Each key determines a given _type_ of game setting for our systems to differentiate and choose.  
 
+![Image](/Resources/Assets/SS_SettingsAsset_Game_New.JPG)  
+
+**Deprecated Settings** Where you had to specify both the tag and the object being loaded. This is rather rendundant, but this legacy behavior is still supported.  
+
 ![Image](/Resources/Assets/SS_SettingsAsset_Game.JPG)  
 
 Your defaults can be set at either the object class that you choose to or alternatively modify the exposed defaults of said class at a settings level, too. For information on how this functions, check [creating your own game settings](/3-CreatingYourOwnGameSettings.md).  

@@ -7,6 +7,7 @@ The `Global Widget Settings` asset stores the widget information, and you can ch
 
 ![Settings Defaults](/Resources/Framework/SS_SettingsAsset_Minimzed.JPG)  
 
+* **Platform Settings** Asset controls our platform override settings  
 * **Widget Settings** Asset controls our automatic Widget Settings  
 * **Graphic Settings** Instanced object controls the graphics-related data, features, and settings  
 * **Sound Settings** Instanced object controls the sound/audio-related data, features, and settings  

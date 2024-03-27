@@ -8,6 +8,17 @@ An Input layout is a contained configuration for accepting and determining what 
 
 These layouts declare their name, profile type (keyboard, gamepad, all), and which key data to use for functionality purposes.  
 
+![Layout](/Resources/Assets/SS_InputLayout_Default.JPG)    
+
+Input Profiles in both Standard and Enhanced input use them for two purposes:  
+
+* Define accepted keys (as per the `bRestrictInputLayoutToKeyData` setting)  
+* Define visual data used for widgets, display keys, and rebinding  
+
+![Layout2](/Resources/Assets/SS_InputLayoutProfile.JPG)  
+
+You can Query this information by doing `UUOInputSettings::Get()->GetBindingDisplayData` for generic data, or either the `GetVisualEnhancedInputData` or `GetVisualStandardInputData` depending on which system you're using. 
+
 ___  
 
 ## Standard Input
@@ -31,7 +42,7 @@ The settings at the default asset level dictate which standard input asset to us
 
 Rebind Standard Input interacts with the Engine's regular Input System, which you can find by going to `Project Settings -> Engine -> Input`
 
-The Input Asset contains  
+### SI Asset Settings 
 
 * `Input Binding Display Options` used by widgets, it lets us define the text values for each binding, both action and axis.  
 * `Input Layouts` control the main element on binding  
@@ -54,12 +65,18 @@ ___
 
 #### EI Input Profiles
 
+Input profiles are the actual collections of bindings that get used. Profiles reference Layouts via their `ProfileName` variable to understand what input layout they utilize. You can use Input Profiles either to distinguish between different input types (Controller, Keyboard, etc) or define different combinations of gameplay status (Hero, Driver, etc).  
+
+Input Profiles also give you options for rebinding, such as conflict resolution, key interaction and swapping options.  
+
 ### EI Instanced Settings
 
 The settings at the default asset level dictate which standard input asset to use and which features are enabled.  
 ![Image](/Resources/Assets/SS_SettingsAsset_InputEnhanced.jpg)  
 
-The Input asset Contains  
+On Profile Switch Input action determines how we inject information into the Enhanced Input Systems. For example, projects working with `Lyra` that do not use their settings widget wouldn't want to Replace Input Stack as the `HeroComponent` in that sample Project resets enhanced input contexts active every time the pawn is initialized. For cases like this, where you have explicit actions determining the active contexts, you'll want to only apply Rebinding history and let the game logic handle all the input injections and dejections.  
+
+### EI Asset Settings 
 
 * `Input Profile Layout Settings` controls the potential allowed keys and their display options.  
 * `Allowed Input Contexts For Rebinding` gives the allowed list to rebind from. The Value element of the map (the boolean) controls whether it should be shown to the Widgets.  
