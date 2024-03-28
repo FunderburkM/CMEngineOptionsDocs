@@ -44,6 +44,8 @@ In this image above, we're telling the widget of `W_UO_GraphicsDevice` to only s
 
 This is controlled with three functions:  
 
+`UOWidgetInterface::OnWidgetCreation` - This function registers the initializing asset as well as optional wrapper widgets. Check the [Setting Name widget below](#widget-setting-name)
+
 `UOWidgetInterface::SetupSettingValidation`  - This interface function for widgets implementing the interface registers the value set from the data asset setting (see image above) to the widget for later querying.  
 
 `UOWidgetInterface::GetSettingValidation` - This interface function is for querying that value. 
@@ -73,6 +75,7 @@ You see how in this image, you set the setting name widget class, which accepts 
 Important Functions:  
 
 * `UOWidgetSettingNameInterface::SetupValues` This registers the data applied from the builder.  
+
 * `UOWidgetSettingNameInterface::RegisterValueWidget` This registers the widget that this widget will be wrapping.  
 
 
@@ -132,7 +135,8 @@ This section covers the Widget Builder System. First, the basics:
 
 * The base accepted class for this is `UUOWidgetSettingsAssetBase`. The Plugin has specializations for Sound, Graphics, Input, and Game widget setting assets to fit the additional settings with each type of setting.  
 * The base class for building widgets is `UUOWidgetEntryBase`. The Plugin implements multiple specializations for this, including:  
-    * Create Widget, Create Spacer, Create Image, Create Setting Bound Widget, and more. Developers can create their own Widget Entry Base child classes (C++ Only, BP extension support will come later) if they desire custom widget creation logic.  
+    * Create Widget, Create Spacer, Create Image, Create Setting Bound Widget, and more. Developers can create their own Widget Entry Base child classes if they desire custom widget creation logic.  
+    * You can create your own widget builder logic by inheriting from `UOWidgetEntryBlueprintBase`.  
 * The widgets are build via the `UUOWidgetHelper` Function library. This library includes and handles the vast majority of the functionality responsible for building widgets in the entire plugin.  
 * It is the children of `UUOWidgetEntryBase` that utilize the specializations of the widget interfaces and handle their initialization.  
 
@@ -179,4 +183,10 @@ virtual UWidget* CreateNewWidget(UUserWidget* OwningWidgetObject) const;
 virtual UWidget* PrepareWidgetForAddition(UUserWidget* OwningWidgetObject, UWidget* CreatedWidget, UOWidgetSettingsAssetBase* FromSettingsAsset) const;
 ```
 
-in `PrepareWidgetForAddition` which then things like the widget binding condition can manipulate via the `Widget To Apply Action To`. Keep in mind that `IUOWidgetInterface`, in its `OnWidgetCreation` method, gives the created widget, not the settings name, the optional wrapper widget that contains it.  
+in `PrepareWidgetForAddition` which then things like the widget binding condition can manipulate via the `Widget To Apply Action To`. Keep in mind that `UOWidgetInterface`, in its `OnWidgetCreation` method, gives the created widget, not the settings name, the optional wrapper widget that contains it.  
+
+In this example, `UO_Template_Slot` will be wrapping the Resolution Switch Widget with the Text Value "Resolution".  
+
+![image](/Resources/Widgets/SS_Builder_GraphicSettingsExample.jpg)  
+
+![image](/Resources/Game/SS_Graphics_UI.JPG)  
