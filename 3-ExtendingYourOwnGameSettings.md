@@ -47,4 +47,4 @@ bool UUOGraphicSettings::GetFloatRangeValue_Implementation(FGameplayTag RangeGam
 
 Example of usage:  
 
-![image](/Resources/Framework/SS_Graph_RangeWidgets.JPG)  
+![image](/Resources/Framework/SS_Graph_RangeWidgets.jpg)  

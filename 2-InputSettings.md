@@ -8,14 +8,14 @@ An Input layout is a contained configuration for accepting and determining what 
 
 These layouts declare their name, profile type (keyboard, gamepad, all), and which key data to use for functionality purposes.  
 
-![Layout](/Resources/Assets/SS_InputLayout_Default.JPG)    
+![Layout](/Resources/Assets/SS_InputLayout_Default.jpg)    
 
 Input Profiles in both Standard and Enhanced input use them for two purposes:  
 
 * Define accepted keys (as per the `bRestrictInputLayoutToKeyData` setting)  
 * Define visual data used for widgets, display keys, and rebinding  
 
-![Layout2](/Resources/Assets/SS_InputLayoutProfile.JPG)  
+![Layout2](/Resources/Assets/SS_InputLayoutProfile.jpg)  
 
 You can Query this information by doing `UUOInputSettings::Get()->GetBindingDisplayData` for generic data, or either the `GetVisualEnhancedInputData` or `GetVisualStandardInputData` depending on which system you're using. 
 
