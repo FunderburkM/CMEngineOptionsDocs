@@ -13,6 +13,10 @@ The global Settings widget class are for widgets implementing the `UOWidgetGloba
 
 ![Image](/Resources/Widgets/SS_Graph_CreateGlobalWidget.jpg)  
 
+You can find functions related to the widget system inside the blueprint function library `UOWidgetHelper`. 
+
+![Helper](/Resources/Framework/SS_Graph_WidgetHelper.jpg)  
+
 ## Setting Asset Values
 
 This overviews the basic aspects of making your widgets in a data driven way. Please read the sections below for information on how the system actually works and how to implement it yourself if you want to register custom widgets into it.  
