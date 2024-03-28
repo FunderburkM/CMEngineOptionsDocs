@@ -10,11 +10,14 @@ ___
 
 As mentioned in [Readme](/README.md), all our settings get loaded by the Settings Asset. We recommend checking [the Readme's section on project settings](/README.md#loading-settings). This Settings asset contains the setting configurations for:  
 
+* System Settings  
 * Platform Settings  
 * Graphic Settings  
 * Sound Settings  
 * Input Settings  
 * Game Settings  
+
+[System Settings](/2-SystemSettings.md)  gives developer more control over how the system works and how saving is processed. In v2.3 the functionality is limited, and will be growing substantially in future releases.  
 
 [Platform Settings](/2-PlatformSettings.md) provides the opportunity to set specific overrides for base functionality. In v2.2, we've added options relating to auto detect, vscync, and graphic quality settings, alongside with widget display settings. More extensive platform settings for input and audio may come in future versions depending on user requests.  
 
@@ -59,9 +62,20 @@ ___
 
 ## Widgets
 
-![Image](/Resources/Widgets/SS_GlobalWidget_Settings.JPG)  
-
 Besides containing our settings data individually, our Settings asset also contains our Global Widget settings, which controls defines the information for how the settings widget get created. [This page](/3-WorkingWithWidgets.md) goes deeper into the workings and dynamics of it, but generally it is a collection of data assets defining the classes, settings, and display details for how does the widget get managed.  
+
+![Image](/Resources/Widgets/SS_GlobalWidget_Settings_v23.jpg)  
+
+The global Settings widget class are for widgets implementing the `UOWidgetGlobalInterface` interface and is what is used to generate the entire widget. You can create it from anywhere using the `UUOWidgetHelper::CreateGlobalWidgetFromUniversalOptions` function.    
+
+![Image](/Resources/Widgets/SS_Graph_CreateGlobalWidget.jpg)  
+
+
+## Widgets (Legacy)
+
+Besides containing our settings data individually, our Settings asset also contains our Global Widget settings, which controls defines the information for how the settings widget get created. [This page](/3-WorkingWithWidgets_Legacy.md) goes deeper into the workings and dynamics of it, but generally it is a collection of data assets defining the classes, settings, and display details for how does the widget get managed.  
+
+![Image](/Resources/Widgets/SS_GlobalWidget_Settings.JPG)  
 
 Our widgets use the [listener system](/1-WorkingWithTheSettingsSystem.md#responding-to-changes)  to self update on things based on the [json paths](/1-HowSettingsWork.md#accessing-and-paths) and convert or fetch the data accordingly.  
 

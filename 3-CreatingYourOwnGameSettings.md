@@ -1,6 +1,8 @@
 # Creating your own game settings
 
-We recommend that you have checked [Understanding Data Assets](/UnderstandingAssets.md)  at at least a little bit of [How Settings Work](/HowSettingsWork.md). That said, let's go!
+We recommend that you have checked [Understanding Data Assets](/UnderstandingAssets.md)  at at least a little bit of [How Settings Work](/HowSettingsWork.md). That said, let's go!  
+
+Once done, check out [How to extend and use your own settings!](/3-ExtendingYourOwnGameSettings.md)  
 
 First, let's create our subclass. We recommend creating a class straight from `UUOGameSettings`, but you can choose to subclass `UUOGameSettingsFromV1` if you wish to continue from the support of the v1 types in case you had v1 save game settings. **We will first cover this conceptually using the Blueprint version, then show an example for C++**.  
 

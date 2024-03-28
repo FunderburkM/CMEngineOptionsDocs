@@ -1,5 +1,7 @@
 # Working with Widgets (Legacy)
 
+This page covers widget functionality on Universal Options versions 2.0 to 2.2. In 2.3+ they are still functional, but these widget settings have now been marked as legacy. For the up to date version of this, check [here](/3-WorkingWithWidgets.md).  
+
 ## Understanding Widget Settings
 
 ![Image](/Resources/Widgets/SS_GlobalWidget_Settings.JPG)  

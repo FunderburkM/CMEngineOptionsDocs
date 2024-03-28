@@ -27,7 +27,8 @@ This Readme focuses on the basic elements like plugin enabling, content location
 * 2) [System Settings](/2-SystemSettings.md)  
 * 2) [Game Settings](/2-GameSettings.md), [Graphic Settings](/2-GraphicsSettings.md), [Input Settings](/2-InputSettings.md), [Sound Settings](/2-SoundSettings.md)  
 * 3) [Working with Widgets](/3-WorkingWithWidgets.md)  
-* 3) [Creating your own Game Setting](/3-CreatingYourOwnGameSettings.md)  
+* 3) [Creating your own Game Settings](/3-CreatingYourOwnGameSettings.md)  
+* 3) [Extending your Game Settings](/3-ExtendingYourOwnGameSettings.md)  
 
 ## Content
 

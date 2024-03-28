@@ -119,7 +119,8 @@ So doing the following will be able to modify our `IsPermaDeath` variable, and i
 
 ### Responding to changes
 
-There are two main ways to keep up with the system's changes.  
+There are three main ways to keep up with the system's changes.  
+
 
 1) By subscribing to our System's OnUpdated delegate and checking its tag type. For example, here we're filtering to respond to the graphics' settings.  
 ![Delegate](/Resources/Framework/SS_Graph_SubsystemUpdate.JPG)  
@@ -129,6 +130,11 @@ There are two main ways to keep up with the system's changes.
 
 `IUOSettingsUpdateInterface` is a C++-only interface. Our Widgets utilize this to automatically respond to this ([Check Widget Settings](/WorkingWithWidgets.md)). You can most easily respond to messages using our `UOSettingsListenerComponent`.  
 > You can also use the component as a reference if you wish to do custom interface implementations on uobjects.  
+
+
+3) By utilizing the new listener method in `UUOUniversalOptionsHelper` without having to implement any interface nor component. It's all in a single function node!  
+
+![image](/Resources/Framework/SS_Graph_ListenerFunctions.jpg)  
 
 #### Settings Listener Component
 
