@@ -19,16 +19,18 @@ You can find functions related to the widget system inside the blueprint functio
 
 ## Setting Asset Values
 
-This overviews the basic aspects of making your widgets in a data driven way. Please read the sections below for information on how the system actually works and how to implement it yourself if you want to register custom widgets into it.  
+This overviews the basic aspects of making your widgets in a data driven way. You can read the sections below for information on how the system actually works and how to implement it yourself if you want to register custom widgets into it.  
 
 ![Image](/Resources/Widgets/SS_Builder_GraphicSettingsExample.jpg)  
 
 
-Each Widget asset can be considered a widget panel in the global widget (explained below).  
+Each Widget asset can be considered a widget panel in the global widget.  
 
 Important Information:  
 
 * Widget system tags controls with settings are involved in this widget panel. This means that you can now mix and match setting widgets from multiple systems into a single widget!  
+   * This is also involved and managed by the platform settings 
+   * For the global widget, these will get registered into the menu widget classes for selecting which systems to save, reset, or cancel pending settings.  
 * Widgets created by this system get added into a widget implementing the [UOWidgetContainerInterface](#uowidgetcontainerinterface) interface.  
 * Widgets can be wrapped into containers via the [UOWidgetSettingNameInterface](#uowidgetsettingnameinterface) to provide a friendly name. This lets keep widgets modular by only having to create the widgets for things like the checkboxes/string boxes/sliders and avoiding having to recreate specializations over and over just to change a name and the value it is pointing at.  
 * Each Array Index in `WidgetBuilderEntries` creates a widget based on the instanced settings and get added to the widget with the container interface.   
@@ -105,7 +107,7 @@ Putting the Widget builder settings aside (this is covered below), you see that 
 Important functions
 
 * `UOWidgetSettingValueInterface::SetupSettingValue` - this is used to move the information defined above to the widget itse.f   
-* `UOWidgetSettingValueInterface::GetListenerBindingValue` - this is used for whenever we run the `UUOUniversalOptionsHelper::RegisterSettingListener` to listen for setting changes on this widget.  
+* `UOWidgetSettingValueInterface::GetListenerBindingValue` - this is used for whenever we run the Helper functionality via `UUOUniversalOptionsHelper::RegisterSettingListener` to listen for setting changes on this widget.  
 
 ### UOWidgetContainerInterface
 
@@ -115,17 +117,17 @@ This widget is used by each widget settings asset to hold the widgets created by
 
 Important Functions:  
 
-* `W_UO_GenericContainer::AddCreatedWidget`  
-* `W_UO_GenericContainer::RemoveCreatedWidget`  
-* `W_UO_GenericContainer::InitializeWidgetContainer` - We'll want to store the widget settings asset that created us for the getter function right below 
-* `W_UO_GenericContainer::GetInitializedWidgetAsset` - Returns the asset that initialized this widget   
-* `W_UO_GenericContainer::OnWidgetFinishedConstruction` - Runs after all creation widgets with valid settings have been finished.   
+* `UOWidgetContainerInterface::AddCreatedWidget`  
+* `UOWidgetContainerInterface::RemoveCreatedWidget`  
+* `UOWidgetContainerInterface::InitializeWidgetContainer` - We'll want to store the widget settings asset that created us for the getter function right below 
+* `UOWidgetContainerInterface::GetInitializedWidgetAsset` - Returns the asset that initialized this widget   
+* `UOWidgetContainerInterface::OnWidgetFinishedConstruction` - Runs after all creation widgets with valid settings have been finished.   
 
 ### UOWidgetGlobalInterface
 
 Default Included Implementation of this Interface: `W_UO_Simple_GlobalWidget`  
 
-This widget is referenced by the Global Widget settings and it's used to store the Container Widgets created by the multiple panels to create.  
+This widget is referenced by the Global Widget settings and it's used to store the Container Widgets created by the multiple panels to create, one panel per registered Widget Asset in the Global Widget Settings Asset.    
 
 Important Functions:  
 
@@ -140,9 +142,35 @@ This section covers the Widget Builder System. First, the basics:
 * The base accepted class for this is `UUOWidgetSettingsAssetBase`. The Plugin has specializations for Sound, Graphics, Input, and Game widget setting assets to fit the additional settings with each type of setting.  
 * The base class for building widgets is `UUOWidgetEntryBase`. The Plugin implements multiple specializations for this, including:  
     * Create Widget, Create Spacer, Create Image, Create Setting Bound Widget, and more. Developers can create their own Widget Entry Base child classes if they desire custom widget creation logic.  
-    * You can create your own widget builder logic by inheriting from `UOWidgetEntryBlueprintBase`.  
+    * For Blueprint Projects, you can create your own widget builder logic by inheriting from `UOWidgetEntryBlueprintBase`. 
+    * For C++ Projects, you can inherit and override `UUOWidgetEntryBase` or subclass of this.  
 * The widgets are build via the `UUOWidgetHelper` Function library. This library includes and handles the vast majority of the functionality responsible for building widgets in the entire plugin.  
 * It is the children of `UUOWidgetEntryBase` that utilize the specializations of the widget interfaces and handle their initialization.  
+
+![image](/Resources/Widgets/SS_WidgetSettings_BuilderOptions.jpg)  
+
+For either C++ or Blueprint Classes, you can override the following functions:  
+
+```cpp
+
+//Checks that we have valid information to try to create a widget
+virtual bool HasValidData() const override;
+
+//Tries to create the base widget based on our data 
+virtual UWidget* CreateNewWidget(UUserWidget* OwningWidgetObject) const override;
+
+//Optional override that lets us wrap the widget created in CreateNewWidget(). This is useful for things like the wrapped setting name widget
+virtual UWidget* PrepareWidgetForAddition(UUserWidget* OwningWidgetObject, UWidget*CreatedWidget, UUOWidgetSettingsAssetBase* FromSettingsAsset) const override;
+
+// Runs after everything has been run. Runs it on the widget created in CreateNewWidget. 
+virtual void PostWidgetCreation(UWidget* NewlyCreatedWidget) const override;
+```
+
+This is run by the functions in `UUOWidgetHelper`:  
+
+* `UUOWidgetHelper::InitializeWidgetContainer`, which starts creating the widget entries one by one at a container level.  
+* `UUOWidgetHelper::CreateWidgetForContainer` is what creates each individual widget.  
+* `UUOWidgetHelper::PrepareWidgetForAdditionToContainer` which runs the preparation for each widget logic after CreateNewWidget has been created.  
 
 ### Widget Binding Condition
 
