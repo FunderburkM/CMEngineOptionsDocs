@@ -56,7 +56,7 @@ These concepts are used throughout both the subsystem and setting actions, so le
 
 Going off from what's above and [our overview on serialization](/1-HowSettingsWork.md#saving-and-serialization), let's explain how to work with settings for both our classes and your custom game settings. We'll start by explaining our implementation of V1 Game Settings Blueprint. This class has a `Vector2D` property called `MouseMultipliers`, and `JSON-wise` we treat it as `$.mouseMultipliers`.  
 
-We can modify `MouseMultipliers` in BP however and from wherever we like, however, we need an additional bit of logic for our settings system to register those changes. Let's take a look. We have `SetMouseX()` and `SetMouseY()` functions, which our [widget settings](/WorkingWithWidgets.md) interacts with.  
+We can modify `MouseMultipliers` in BP however and from wherever we like, however, we need an additional bit of logic for our settings system to register those changes. Let's take a look. We have `SetMouseX()` and `SetMouseY()` functions, which our [widget settings](/3-WorkingWithWidgets.md) interacts with.  
 ![Mouse X](/Resources/Framework/SS_V1Game_SetMouseX.JPG)  
 We check for differences in the Vector Component, and if it's different, we mutate `MouseMultipliers`. Then, we have the option of running two things:  
 
