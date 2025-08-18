@@ -54,7 +54,7 @@ These concepts are used throughout both the subsystem and setting actions, so le
 
 ## Working with Settings
 
-Going off from what's above and [our overview on serialization](/HowSettingsWork.md#saving-and-serialization), let's explain how to work with settings for both our classes and your custom game settings. We'll start by explaining our implementation of V1 Game Settings Blueprint. This class has a `Vector2D` property called `MouseMultipliers`, and `JSON-wise` we treat it as `$.mouseMultipliers`.  
+Going off from what's above and [our overview on serialization](/1-HowSettingsWork.md#saving-and-serialization), let's explain how to work with settings for both our classes and your custom game settings. We'll start by explaining our implementation of V1 Game Settings Blueprint. This class has a `Vector2D` property called `MouseMultipliers`, and `JSON-wise` we treat it as `$.mouseMultipliers`.  
 
 We can modify `MouseMultipliers` in BP however and from wherever we like, however, we need an additional bit of logic for our settings system to register those changes. Let's take a look. We have `SetMouseX()` and `SetMouseY()` functions, which our [widget settings](/WorkingWithWidgets.md) interacts with.  
 ![Mouse X](/Resources/Framework/SS_V1Game_SetMouseX.JPG)  
@@ -80,7 +80,7 @@ Onto how broadcasts work, we have two ways of broadcasting changes:
 
 ### Working with Paths
 
-The basics of `JSON Paths` is overviewed in the [How Settings Work](/HowSettingsWork.md#accessing-and-paths) section. We utilize `FUOJsonPath` for this functionality, which can analyze any json object (C++ level functionality). Our settings use this for reading, writing, and listening.  
+The basics of `JSON Paths` is overviewed in the [How Settings Work](/1-HowSettingsWork.md#accessing-and-paths) section. We utilize `FUOJsonPath` for this functionality, which can analyze any json object (C++ level functionality). Our settings use this for reading, writing, and listening.  
 
 #### Reading Data
 
