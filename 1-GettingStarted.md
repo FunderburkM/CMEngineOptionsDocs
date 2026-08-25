@@ -19,7 +19,7 @@ As mentioned in [Readme](/README.md), all our settings get loaded by the Setting
 
 [System Settings](/2-SystemSettings.md)  gives developer more control over how the system works and how saving is processed. In v2.3 the functionality is limited, and will be growing substantially in future releases.  
 
-[Platform Settings](/2-PlatformSettings.md) provides the opportunity to set specific overrides for base functionality. In v2.2, we've added options relating to auto detect, vscync, and graphic quality settings, alongside with widget display settings. More extensive platform settings for input and audio may come in future versions depending on user requests.  
+[Platform Settings](/2-PlatformSettings.md) provides the opportunity to set specific overrides for base functionality. In v2.2, we've added options relating to auto detect, vsync, and graphic quality settings, alongside with widget display settings. More extensive platform settings for input and audio may come in future versions depending on user requests.  
 
 Graphic, Sound, and Input settings are established via their respective Data assets for configurations while the Game Settings framework expects the user to extend their classes and define the data and logic as they require. You can find more information about our data assets and default settings [here](/1-UnderstandingAssets.md). These are particularly important for our Game Settings framework, where you can define your saving types and then identify the system specifically.  
 
@@ -46,7 +46,7 @@ ___
 
 [This page](/1-WorkingWithTheSettingsSystem.md) has far more insights on the inner workings of the framework, but settings have the following major actions:  
 
-* Set Pending - Synchronizes our own JSON pending data to our variable data. seting last confirmed data to our pending JSON data.  
+* Set Pending - Synchronizes our own JSON pending data to our variable data, setting last confirmed data to our pending JSON data.  
 * Discard Pending - Synchronizes our variable data to the last Confirmed JSON data, setting last confirmed data to Loaded data if save exists, otherwise default JSON data.  
 * Reset to Default - Synchronizes our variable data to the default JSON data, also setting last confirmed data to Default data.  
 
@@ -101,8 +101,8 @@ You can choose to dynamically instance it at runtime by running this code or alt
 
 #### Advanced Copy
 
-If you wish to duplicate the widgets to reduce the setup for deep customization of things, you can advanced-copy the widgets folder. Keep in mind that Advanced Copy does not work for any files that are installed at the engine level, such as Marketplace Plugins. You can move the plugin from EngineDirectory/Plugins/Marketplace/CM_Engine_Options to your ProjetDirectory/Plugins/CM_Engine_Options then run Advanced copy on it.  
-> Doing tnis may require your project becoming a C++ project to compile the binaries.  
+If you wish to duplicate the widgets to reduce the setup for deep customization of things, you can advanced-copy the widgets folder. Keep in mind that Advanced Copy does not work for any files that are installed at the engine level, such as Marketplace Plugins. You can move the plugin from EngineDirectory/Plugins/Marketplace/CM_Engine_Options to your ProjectDirectory/Plugins/CM_Engine_Options then run Advanced copy on it.  
+> Doing this may require your project becoming a C++ project to compile the binaries.  
 
 #### Subclassing
 

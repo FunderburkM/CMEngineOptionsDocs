@@ -2,6 +2,37 @@
 
 This refers to the system being used by v2.3 and above. For the Previous Widget System now marked as legacy, please check [this page](/3-WorkingWithWidgets_Legacy.md).  
 
+## The Widget Hierarchy
+
+Before any of the interfaces or the builder make sense, it helps to see the shape of the whole thing. A settings menu built with this system is **four nested levels**, each level owning the one below it:
+
+```mermaid
+flowchart TD
+    ASSET["Global Widget Settings asset<br/>(lists which panels exist)"]
+    ASSET -->|builds| G
+
+    G["1. Global Widget<br/>the whole menu"]
+    G --> C1["2. Container / Panel<br/>one per settings area (Graphics, Sound...)"]
+    G --> C2["2. Container / Panel<br/>..."]
+
+    C1 --> N1["3. Setting Name row<br/>label + slot wrapper (optional)"]
+    N1 --> V1["4. Setting Value control<br/>the slider / switch itself"]
+    C1 --> V2["4. Setting Value control<br/>added directly, no wrapper"]
+```
+
+| Level | What it is | Interface | Default class we ship |
+|---|---|---|---|
+| **1. Global** | The whole menu. Holds every panel plus the shared Save / Reset / Cancel controls. | `UOWidgetGlobalInterface` | `W_UO_Simple_GlobalWidget` |
+| **2. Container** | One panel per widget-settings asset (Graphics, Sound, Input, Game). Holds that panel's rows. | `UOWidgetContainerInterface` | `W_UO_GenericContainer` |
+| **3. Setting Name** | Optional row wrapper that gives a control a friendly label (e.g. "Resolution"). | `UOWidgetSettingNameInterface` | `W_UO_Template_Slot` |
+| **4. Setting Value** | The actual control bound to one setting — a slider, a switch, a dropdown. | `UOWidgetSettingValueInterface` | `UOWidgetSimpleSettingsBase` |
+
+One interface cuts across all of it: **`UOWidgetInterface`** handles per-widget show / hide / disable rules (validation binding). Value controls implement it, but so can anything you want to drive from a setting query.
+
+**How a menu gets built:** the [Global Widget Settings asset](#understanding-widget-settings) lists which panels to include. Each panel is a `UUOWidgetSettingsAssetBase` whose `WidgetBuilderEntries` (`UUOWidgetEntryBase`) each create one control — optionally wrapped in a name row — and drop it into the container. The `UUOWidgetHelper` function library drives every step. The key thing this buys you over the [legacy system](/3-WorkingWithWidgets_Legacy.md): levels 3 and 4 are decoupled, so you author a checkbox or slider **once** and reuse it under any label, in any panel, mixed across settings systems.
+
+The rest of this page walks those levels bottom-up: first how to spawn the finished menu, then each interface, then the builder that ties them together.
+
 ## Understanding Widget Settings
 
 ![Image](/Resources/Widgets/SS_GlobalWidget_Settings_v23.jpg)  
@@ -11,9 +42,13 @@ The global Settings widget class are for widgets implementing the `UOWidgetGloba
 
 ## Spawning the Widget
 
+To put the menu on screen, call `UUOWidgetHelper::CreateGlobalWidgetFromUniversalOptions`. It reads the active [Global Widget Settings asset](#understanding-widget-settings), builds the whole hierarchy above, and hands you back the finished Global Widget — you then add it to your viewport / menu stack like any other `UUserWidget`.  
+
 ![Image](/Resources/Widgets/SS_Graph_CreateGlobalWidget.jpg)  
 
-You can find functions related to the widget system inside the blueprint function library `UOWidgetHelper`. 
+You don't have to go through the helper: any child of the Global Widget class dropped straight into your own menu also works, since it initializes itself from the active settings on construction. The helper is just the one-call path when you're spawning the menu on demand.  
+
+Every function related to the widget system lives on the `UOWidgetHelper` blueprint function library, so it's the first place to look when wiring things up.  
 
 ![Helper](/Resources/Framework/SS_Graph_WidgetHelper.jpg)  
 
@@ -38,7 +73,7 @@ Important Information:
 
 ## UO Widget Interfaces
 
-Before explaining how the widget builder system itself works, let's first go over the interfaces that widgets using this system need to use. Here are the important ones for this system:  
+Before explaining how the widget builder system itself works, let's go over the interfaces that widgets in this system use. Each maps to a level from [the hierarchy above](#the-widget-hierarchy) — a widget declares which level it plays by implementing the matching interface, so a custom control only has to implement the one interface for the tier it lives at.  
 
 ### UOWidgetInterface
 

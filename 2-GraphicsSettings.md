@@ -38,7 +38,7 @@ if (UUOGraphicSettings* Settings = UUOGraphicSettings::Get(this))
     //For Example, getting if Vsync is enabled
     Settings->GetVSync();
     //Then applying it
-    Settings->SetVSync(true, UUOCoreHelper::GetEvent_ApplySave()));
+    Settings->SetVSync(true, UUOCoreHelper::GetEvent_ApplySave());
     //Prefer to use the Gameplay Tag Container options in CoreHelper in C++,
     // and use the Container Builder default options in Blueprint
 }

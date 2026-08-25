@@ -19,7 +19,7 @@ if (auto* UO = UUOUniversalOptions::Get(this))
 
 //another example
 
-if (auto* Graphics = UUOGraphicsSettings::Get(this))
+if (auto* Graphics = UUOGraphicSettings::Get(this))
 {
     //do something with our graphic settings
 }
@@ -29,7 +29,7 @@ if (auto* Graphics = UUOGraphicsSettings::Get(this))
 
 ## Understanding the Settings System  
 
-At the Subsystem level, there are several getters for given setting types (as shown above) as well as widget options. For interacting with the Saving and applicating settings elements. For interacting with the save system, these are the main elements:  
+At the Subsystem level, there are several getters for given setting types (as shown above) as well as widget options. For interacting with the saving and applying of settings elements. For interacting with the save system, these are the main elements:  
 ![Subsystem Actions](Resources/Framework/SS_Graph_SubsystemActions.JPG)  
 
 These actions are also available at the per-setting level  
@@ -54,7 +54,7 @@ These concepts are used throughout both the subsystem and setting actions, so le
 
 ## Working with Settings
 
-Going off from what's above and [our overview on serialization](/1-HowSettingsWork.md#saving-and-serialization), let's explain how to work with settings for both our classes and your custom game settings. We'll start by explaining our implementation of V1 Game Settings Blueprint. This class has a `Vector2D` property called `MouseMultipliers`, and `JSON-wise` we treat it as `$.mouseMultipliers`.  
+Going off from what's above and [our overview on serialization](/1-HowSavingWorks.md#serialization), let's explain how to work with settings for both our classes and your custom game settings. We'll start by explaining our implementation of V1 Game Settings Blueprint. This class has a `Vector2D` property called `MouseMultipliers`, and `JSON-wise` we treat it as `$.mouseMultipliers`.  
 
 We can modify `MouseMultipliers` in BP however and from wherever we like, however, we need an additional bit of logic for our settings system to register those changes. Let's take a look. We have `SetMouseX()` and `SetMouseY()` functions, which our [widget settings](/3-WorkingWithWidgets.md) interacts with.  
 ![Mouse X](/Resources/Framework/SS_V1Game_SetMouseX.JPG)  
@@ -109,13 +109,15 @@ How you decide to work with these is up to you, this just showcasing how you can
 
 `SetData()`'s support is up to the specific Setting Class' `UUOSettingsBase::ParseSetData` implementation.  
 
-> **Note**: Our base C++ classes don't implement this, so we encourage to use specialized functions (for example, `UUOGraphicsSettings::SetGamma()`) when available.  
+> **Note**: Our base C++ classes don't implement this, so we encourage to use specialized functions (for example, `UUOGraphicSettings::SetGamma()`) when available.  
 
 We include an example for working with this inside our V1 Test Game settings:  
 ![Parse Set Data](/Resources/Framework/SS_V1Game_ParseData.JPG)  
 
 So doing the following will be able to modify our `IsPermaDeath` variable, and in this case apply, save, and broadcast that specific setting.  
 ![Set Data](/Resources/Framework/SS_V1Game_SetData.JPG)  
+
+> **Generic access (no typed getter needed):** if you just want to read or write a value by its JSON path without grabbing the object first, use the wildcard nodes on `UUOSettingsBPHelper` — **Get/Set Settings Data** (you already have the object) or **Get/Set Subsystem Data** (resolve it from a settings tag in the same call). They accept any type on the value pin and take the same Event container. These are the most reusable way to touch a setting from anywhere; see the [Reference Sheet](/4-Reference.md#helper-libraries).  
 
 ### Responding to changes
 
@@ -128,13 +130,15 @@ There are three main ways to keep up with the system's changes.
 2) By path, using the Listener Framework. Any object implementing `IUOSettingsUpdateInterface` can subscribe and respond to these events, and use the `RegisterListener()` function for the settings themselves.  
 ![Register Listener](/Resources/Framework/SS_Graph_ListenerUpdate.JPG)  
 
-`IUOSettingsUpdateInterface` is a C++-only interface. Our Widgets utilize this to automatically respond to this ([Check Widget Settings](/WorkingWithWidgets.md)). You can most easily respond to messages using our `UOSettingsListenerComponent`.  
+`IUOSettingsUpdateInterface` is a C++-only interface. Our Widgets utilize this to automatically respond to this ([Check Widget Settings](/3-WorkingWithWidgets.md)). You can most easily respond to messages using our `UOSettingsListenerComponent`.  
 > You can also use the component as a reference if you wish to do custom interface implementations on uobjects.  
 
 
 3) By utilizing the new listener method in `UUOUniversalOptionsHelper` without having to implement any interface nor component. It's all in a single function node!  
 
 ![image](/Resources/Framework/SS_Graph_ListenerFunctions.jpg)  
+
+4) By using the **Listen For Setting Changes** async Blueprint node (`UUOListenForSettingChanges`). This is the lightest option for one-off Blueprint listeners that live and die with a widget or actor — the node registers on activation and cleans itself up, so there's nothing to unregister by hand.  
 
 #### Settings Listener Component
 

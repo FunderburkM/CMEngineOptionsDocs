@@ -2,6 +2,32 @@
 
 This page covers widget functionality on Universal Options versions 2.0 to 2.2. In 2.3+ they are still functional, but these widget settings have now been marked as legacy. For the up to date version of this, check [here](/3-WorkingWithWidgets.md).  
 
+## The Widget Hierarchy (Legacy)
+
+The legacy system is built around **one fixed widget class per settings system**. The global widget spawns, for each settings area, a section button and a matching per-type widget; that per-type widget then builds its own rows:
+
+```mermaid
+flowchart TD
+    G["Global Widget<br/>UUOWidgetGlobalSettings"]
+    G --> B["Section Menu buttons<br/>(one per area)"]
+    G --> GR["Graphics<br/>UUOWidgetGraphicSettings"]
+    G --> IN["Input<br/>UUOWidgetInputSettings"]
+    G --> SO["Sound<br/>UUOWidgetSoundSettings"]
+    G --> GM["Game<br/>UUOWidgetGameSettings"]
+    GR --> GRR["Graphic type rows"]
+    IN --> INR["Input rebind rows<br/>(UUOWidgetInputRow)"]
+    SO --> SOR["Profile rows<br/>(UUOWidgetProfileSettings)"]
+    GM --> GMR["Game rows<br/>(UUOWidgetGameRow)"]
+```
+
+| Level | What it is | Class |
+|---|---|---|
+| **Global** | The whole menu. Spawns a section button + a per-type widget for each area. | `UUOWidgetGlobalSettings` |
+| **Per-type widget** | One dedicated widget per settings system, each with its own row logic. | `UUOWidgetGraphicSettings`, `UUOWidgetInputSettings`, `UUOWidgetSoundSettings`, `UUOWidgetGameSettings` |
+| **Row** | The individual controls inside a per-type widget. | Graphic type widgets, `UUOWidgetInputRow`, `UUOWidgetProfileSettings`, `UUOWidgetGameRow` |
+
+**The main difference from the [current system](/3-WorkingWithWidgets.md):** here the systems are hard-wired — each area has its own widget class and its own row types, so you can't mix settings from two systems into one panel or reuse a control under a different label. The 2.3+ builder decoupled the row (label) from the control (value) and made panels data-driven, which is why it's the recommended path for new work. Everything below documents the legacy classes as they still ship.
+
 ## Understanding Widget Settings
 
 ![Image](/Resources/Widgets/SS_GlobalWidget_Settings.JPG)  
@@ -47,7 +73,7 @@ You select which Game Setting Assets to be present by the Tag to Game Widget Set
 
 You select the main Widget class by `UUOWidgetGameSettings` to act as your processor and then proceed to choose the given `JSON` paths. For example for our `V1 Settings` included as test we have the `boolean` variable `bIsPermadeath` and a `vector2D` variable `MouseMultipliers`.  
 
-For the widget part,we utilize the `UUOWidgetGameRow` to populate things. In this example we'll use the `bool` widget child to showcase how it can work with [Set Data](/WorkingWithTheSettingsSystem.md#writing-data), and a specialized widget to work on our Mouse Multiplier variable.  After setting the class we can also choose the Display Name, which we'll show how to wire it up.  
+For the widget part,we utilize the `UUOWidgetGameRow` to populate things. In this example we'll use the `bool` widget child to showcase how it can work with [Set Data](/1-WorkingWithTheSettingsSystem.md#writing-data), and a specialized widget to work on our Mouse Multiplier variable.  After setting the class we can also choose the Display Name, which we'll show how to wire it up.  
 
 ### Game Row Widget  
 
@@ -69,7 +95,7 @@ ___
 
 ## Game Settings Widget Base
 
-Like the [Listener Component](/WorkingWithTheSettingsSystem.md#settings-listener-component), we [respond to both paths and any update event](WorkingWithTheSettingsSystem.md#responding-to-changes). Examples include our Graphics Settings widget, Sound Widget, and even the Game Row Widgets themselves.  
+Like the [Listener Component](/1-WorkingWithTheSettingsSystem.md#settings-listener-component), we [respond to both paths and any update event](/1-WorkingWithTheSettingsSystem.md#responding-to-changes). Examples include our Graphics Settings widget, Sound Widget, and even the Game Row Widgets themselves.  
 
 ![Graphic Widget defaults](/Resources/Widgets/SS_GraphicsWidget_Defaults.JPG)  
 

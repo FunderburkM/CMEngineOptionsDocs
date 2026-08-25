@@ -51,7 +51,7 @@ Likewise, you can also set specific graphic configurations for different platfor
 
 Disable Audio Switch Management  
 
-You can control which platforms are allowed to switch audio devices whenever it's enbaled via Audio Instanced Settings.  
+You can control which platforms are allowed to switch audio devices whenever it's enabled via Audio Instanced Settings.  
 
 Per Platform Build Sound Profile Widgets  
 
@@ -72,3 +72,12 @@ Gives the developer the option to disable input profiles per platform and/or dis
 You can also specify which platforms should widgets like graphic quality not be visible as well as which widget categories to straight up hide, overriding any settings in the [Global Widget Settings](/3-WorkingWithWidgets.md).  
 
 ![Visibility](/Resources/Platform/PlatformSettings_Widgets.JPG)  
+
+### Save Backends
+
+Which [save model](/1-HowSavingWorks.md#save-backends-save-models) a setting writes through is resolved at the platform level, so it lives here too. Each setting carries a `SaveTypeTag`, and the Platform Settings object resolves that tag to a concrete `UUOSaveModel` (and owns the instance).
+
+* `Save Model Overrides` on this asset maps a `UniversalOptions.SaveType.*` tag to a `UUOSaveModel` class. Use it to route a save type through your own backend — for example, a cloud model — on this platform.
+* If a tag isn't overridden, a built-in default is used (the asynchronous local model for the async tag), falling back to the synchronous local model.
+
+Because resolution happens per platform, you can run asynchronous local saves on desktop and a cloud model on console without changing the settings themselves. The model API and a custom-backend example are in [Save Backends (Save Models)](/1-HowSavingWorks.md#save-backends-save-models).  

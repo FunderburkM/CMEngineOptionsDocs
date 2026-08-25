@@ -1,6 +1,27 @@
 # ChangeLogs
 
-## v2.3  
+## v2.4  
+
+New & Improvements (General):  
+
+* **Runtime settings registration & Settings Fragments.** Game settings no longer have to live only in the Settings Asset — they can be added and removed at runtime. `UUOUniversalOptions::RegisterGameSetting` (single) and `RegisterSettingsFragment` (a batch) register settings on the fly and hand back a `FUORegistrationHandle` to undo it, and a new `UOGameFeatureAction_AddSettingsFragment` injects a feature's settings automatically when a Game Feature activates. Listen for changes via `OnGameSettingRegistered` / `OnGameSettingUnregistered`.  
+* **Per-setting save destinations & save slots.** Each setting can now declare *where* it saves — `SaveDestinationName`, `SaveTypeTag`, and `FallbackLoadSlotNames` on `UUOSettingsBase` — resolved through a new `UUOSaveSlot` layer with async, per-setting load/unload. This is what lets different settings live in different files and back-ends instead of one monolithic save.  
+* **Pluggable save backends (save models).** `SaveModelOverrides` on the Platform Settings asset maps a `UniversalOptions.SaveType.*` tag to a `UUOSaveModel` class; the built-in synchronous and asynchronous local save models ship as the defaults, so existing projects are unaffected. See [How Saving Works](/1-HowSavingWorks.md#save-backends-save-models).  
+* Added `bForceSyncOnShutdown` (Project Settings). When enabled, every settings slot is flushed on application exit, so pending async saves aren't lost when the engine tears down.  
+* **Extended JSON type support.** The JSON layer now round-trips `FInstancedStruct` (polymorphic structs) with `SaveGame` filtering intact, serializes soft object/class references as path strings, and `FUOJsonValue` gained network (`NetSerialize`) and editor text (`Export`/`ImportTextItem`) support so it replicates and copy/pastes like a native type.  
+* Cross-platform packaging hardening: include hygiene and platform-guarded code paths so the plugin builds cleanly for Win64, Mac, Linux, Android, and iOS marketplace validation.  
+
+New & Improvements (Experimental):  
+
+* **World Save & Saveables (Experimental).** A coordinator for named, per-file world saves (`UUOWorldSaveSettings`) — each world is its own slot, created / renamed / loaded / deleted independently — plus a drop-in persistence layer on top: implement `IUOSaveable`, or just add a `UUOWorldSaveComponent`, and any actor, component, or plain UObject saves and restores its own state through a world save (including spawn/removal of runtime-spawned actors). Systems can also feed world-level payloads through `IUOWorldSaveContributor`.  
+  > Shipped as a preview for v2.4 — the API may change in a future release. See [World Save & Saveables](/3-WorldSaveAndSaveables.md).  
+
+Fixes:  
+
+* Stability and correctness fixes across graphics, audio, and input settings.  
+
+
+## V2.3  
 
 New & Improvements (General):  
 
@@ -35,8 +56,8 @@ New & Improvements (Graphics):
 New & Improvements (Audio):  
 
 * Added Audio Setting Ranges for Volume per profile.  
-* Added Autio Widget settings for creation at the Audio settings and per platform settings.  
-* Fixed a bug with Audio device switching not reseting properly after being modified.  
+* Added Audio Widget settings for creation at the Audio settings and per platform settings.  
+* Fixed a bug with Audio device switching not resetting properly after being modified.  
 * Fixed a bug with Audio device switching [when saving audio device is turned on] changing to the wrong device. 
 
 New & Improvements (Input):  

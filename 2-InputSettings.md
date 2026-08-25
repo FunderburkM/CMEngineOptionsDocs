@@ -47,8 +47,8 @@ Rebind Standard Input interacts with the Engine's regular Input System, which yo
 * `Input Binding Display Options` used by widgets, it lets us define the text values for each binding, both action and axis.  
 * `Input Layouts` control the main element on binding  
 * `Input Profile` controls which input profile should be active by default when not loaded by save game  
-* `Non Rebindable Keys` establishes with Keys (Gamepad Left, Global Back, Escape Button, etc) cannot be accepted for rebinding.  
-* `Non Rebindable Mappings` establishes with mappings (by Name, so say "Escape" action binding) cannot be opened for rebinding.  
+* `Non Rebindable Keys` establishes which Keys (Gamepad Left, Global Back, Escape Button, etc) cannot be accepted for rebinding.  
+* `Non Rebindable Mappings` establishes which mappings (by Name, so say "Escape" action binding) cannot be opened for rebinding.  
 * `Input Profiles` establishes the settings for each individual input profile  
 
 ![Input Asset](/Resources/Assets/SS_InputStandardAsset_Default.JPG)
@@ -81,8 +81,8 @@ On Profile Switch Input action determines how we inject information into the Enh
 * `Input Profile Layout Settings` controls the potential allowed keys and their display options.  
 * `Allowed Input Contexts For Rebinding` gives the allowed list to rebind from. The Value element of the map (the boolean) controls whether it should be shown to the Widgets.  
 * `Profile Name` controls which input profile should be active by default when not loaded by save game  
-* `Non Rebindable Keys` establishes with Keys (Gamepad Left, Global Back, Escape Button, etc) cannot be accepted for rebinding.  
-* `Non Rebindable Mappings` establishes with mappings (by Name, so say "Escape" action binding) cannot be opened for rebinding.  
+* `Non Rebindable Keys` establishes which Keys (Gamepad Left, Global Back, Escape Button, etc) cannot be accepted for rebinding.  
+* `Non Rebindable Mappings` establishes which mappings (by Name, so say "Escape" action binding) cannot be opened for rebinding.  
 * `Input Profiles` establishes the settings for each individual input profile  
 
 ![Input Asset](/Resources/Assets/SS_InputEnhancedAsset.JPG)  
@@ -99,7 +99,7 @@ if (UUOInputSettings* Settings = UUOInputSettings::Get(this))
     //For Example, getting the profile name
     Settings->GetProfileName();
     //Setting it to a new one
-    Settings->SetActiveProfile("Ttest", UUOCoreHelper::GetEvent_ApplySave()));
+    Settings->SetActiveProfile("Test", UUOCoreHelper::GetEvent_ApplySave());
     //Prefer to use the Gameplay Tag Container options in CoreHelper in C++,
     // and use the Container Builder default options in Blueprint
 
@@ -117,3 +117,11 @@ if (UUOInputSettings* Settings = UUOInputSettings::Get(this))
 ```  
 
 By Default, The Input Functionality at runtime is triggered by the Active Input Settings Widget.  
+
+## Events
+
+Bind these on the input settings object to react to input changes without polling:
+
+* `OnInputControllerTypeChanged` — fires when the detected controller type changes (old type → new type). This is the auto-detection event; use it to swap prompt icons or the active input profile. Blueprint subclasses can also override `K2_OnControllerTypeChange`.
+* `OnInputBindingsRebuild` — fires whenever the bindings are rebuilt (profile switch, rebind applied, external change detected). Refresh any binding display widgets here.
+* `OnInputBindingRequest` / `OnInputBindingResult` — the rebind flow: a key press was requested for a binding, and the result of applying it (success, conflict, swap). Present rebind UI feedback from these. Available on both `UUORebindStandardInput` and `UUOEnhancedRebindInput`.  

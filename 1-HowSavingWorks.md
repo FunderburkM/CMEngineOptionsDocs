@@ -83,3 +83,73 @@ In `MakeDefaultValuesToJson`:
 
 In `SynchronizeData`:  
 ![Synchronize](Resources/Framework/SS_TestGame_Synchronize.JPG)  
+
+---
+
+## Save Destinations & Slots (v2.4)
+
+By default every setting saves into the one save file named in your [loaded settings asset](/README.md#loading-settings). As of v2.4 a setting can send its data somewhere else instead — a different file, or a different back-end — by declaring a **save destination** on the setting itself (`UUOSettingsBase`):
+
+| Property | What it does |
+|---|---|
+| `SaveDestinationName` | The slot (file) this setting writes to. Leave empty to use the project's default save game name. |
+| `SaveTypeTag` | A `UniversalOptions.SaveType.*` tag that decides which [save model](#save-backends-save-models) writes the slot. Defaults to the local type. |
+| `FallbackLoadSlotNames` | Older slot names to read from if the primary slot doesn't exist yet — handy for migrating a setting to a new file without losing existing saves. |
+
+Under the hood, settings that share a `SaveDestinationName` are grouped into a **save slot** (`UUOSaveSlot`), and the subsystem loads and saves each slot independently (asynchronously where the model supports it). So "graphics in one file, campaign progress in another" is just two settings pointing at two destination names — no manual file handling. The subsystem resolves an empty destination to the default save game name, so existing projects keep saving exactly as before.
+
+## Save Backends (Save Models)
+
+Everything above is about *what* gets serialized, and *which slot* it lands in. **How** that slot is written — the actual bytes to disk, cloud, or elsewhere — is decided separately, by a **save model** (`UUOSaveModel`). A save model is a small, stateless strategy object that describes how a slot's data is loaded and stored — the rest of the system talks to it without caring whether the bytes end up on local disk, on a platform's cloud, or anywhere else.
+
+Two models ship with the plugin:
+
+| Model | Behavior |
+|---|---|
+| `UUOSaveModel_Local` | **Synchronous** local save. Reads/writes on the same frame and reports back immediately. |
+| `UUOSaveModel_LocalAsync` | **Asynchronous** local save. Uses the engine's async save/load so large writes don't hitch the game thread. |
+
+### How a setting picks its backend
+
+Each setting object has a **`SaveTypeTag`** (`UniversalOptions.SaveType.*`). The **Platform Settings** object resolves that tag to a concrete save model (`UUOPlatformSettings::ResolveModel`) and owns the instance — one shared, lazily created instance per model class. The lookup order is:
+
+1. `SaveModelOverrides` on the [Platform Settings](/2-PlatformSettings.md) asset — a map of `SaveType` tag → `UUOSaveModel` class.
+2. A built-in default for the tag (the async tag resolves to the async local model).
+3. Otherwise, the synchronous local model.
+
+Because the built-in local models are the defaults, existing projects need to change nothing. And because resolution is per platform, the same save type can run through different backends on different platforms.
+
+### The shutdown flush
+
+Save models are async-shaped — every call reports completion through a callback (synchronous models just fire it on the same frame). Two members handle the shutdown case, where there's no time to wait on an async write:
+
+* `SaveSync(SlotName, Data)` — a blocking write used by the [`bForceSyncOnShutdown`](/2-SystemSettings.md#related-save-controls-v24) path and V1 restore.
+* `SupportsSyncSave()` — whether `SaveSync` actually writes. Both local models return `true`; if a custom backend can't write synchronously, the shutdown flush falls back to a blocking local write so nothing is lost.
+
+### Writing your own backend (e.g. cloud)
+
+There is no cloud model in the box — instead, cloud/Steam/console/encrypted saving is a plug-in point. Subclass `UUOSaveModel` and implement:
+
+```cpp
+UCLASS()
+class UMyCloudSaveModel : public UUOSaveModel
+{
+    GENERATED_BODY()
+public:
+    // Async-shaped: do the work, then call the callback when it finishes.
+    virtual void Load(const FString& SlotName,
+        TFunction<void(bool bSuccess, TArray<FUOSaveGameData>)> Callback) const override;
+
+    virtual void Save(const FString& SlotName, const TArray<FUOSaveGameData>& Data,
+        TFunction<void(bool bSuccess)> Callback) const override;
+
+    // Optional: blocking write for shutdown. Return true from SupportsSyncSave() if you implement it.
+    virtual void SaveSync(const FString& SlotName, const TArray<FUOSaveGameData>& Data) const override;
+    virtual bool SupportsSyncSave() const override { return true; }
+
+    virtual void Delete(const FString& SlotName,
+        TFunction<void(bool bSuccess)> Callback) const override;
+};
+```
+
+Then map the save type you want routed to it in `SaveModelOverrides`. Models are created lazily (one instance per class, reused for every slot of that type) and must stay **stateless** — all per-slot data comes in through the `SlotName` / `Data` arguments.  

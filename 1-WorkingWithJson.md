@@ -50,7 +50,7 @@ UO_GET_FIELD(JsonObject, FieldName, Output)
 UO_SET_FIELD(JsonObject, FieldName, Input)
 ```
 
-for both Get Field and Set Field, these functions support primitives, FName/FString, Structures, FProperty*, Arrays, Maps, and even types with custom methods!
+for both Get Field and Set Field, these functions support primitives, FName/FString, Structures, FProperty*, Arrays, Maps, `FInstancedStruct`, soft object/class references, and even types with custom methods!
 
 ```cpp
 
@@ -73,6 +73,14 @@ if (UO_GET_FIELD(JsonObject, TEXT("myField"), Output))
 UO_SET_FIELD(JsonObject, TEXT("myField"), FVector(50.f, 55.f, 65.f));
 
 ```
+
+#### Instanced structs & object references (v2.4)
+
+The serializer understands a few types that the engine's default JSON does not:
+
+* **`FInstancedStruct`** round-trips as a small envelope that records the concrete struct type, so the exact subtype is restored on load — not flattened to the base. `SaveGame` filtering still applies to the inner struct's fields, so the same "only tagged properties are written" rules hold.
+* **Soft references** (`FSoftObjectPtr` / `FSoftClassPtr`) are written as their asset **path string** and resolved back on load, so a save never hard-loads the referenced asset just to store a reference. Hard object references are still skipped — persist a soft reference (or your own id) instead.
+* **`FUOJsonValue`** is now network-serializable (`NetSerialize`) and supports editor copy/paste (`Export`/`ImportTextItem`), so it can travel over RPCs and be pasted between properties like a native type.
 
 for structs and custom classes (non-uclasses), you can also implement your own functions! if your UStructs don't have these functions declared, it'll use the engine's default JSON-ToStruct and Struct-ToJson functionality.  
 

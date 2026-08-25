@@ -3,7 +3,7 @@
 Our Settings are based on data assets to ensure data driven design. The general philosophy is that each setting type (say graphics, input, audio, game settings) will have two Data Asset Types: System Settings and Widget Settings.  
 ![image](/Resources/Assets/SS_AssetPicker_Duo.JPG)  
 
-The `Global Widget Settings` asset stores the widget information, and you can check more [here](/1-WorkingWithWidgets.md). For this page, let's focus on the system settings, starting on our Settings Asset:  
+The `Global Widget Settings` asset stores the widget information, and you can check more [here](/3-WorkingWithWidgets.md). For this page, let's focus on the system settings, starting on our Settings Asset:  
 
 ![Settings Defaults](/Resources/Framework/SS_SettingsAsset_Minimzed.JPG)  
 

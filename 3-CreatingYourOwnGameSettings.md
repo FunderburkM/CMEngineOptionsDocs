@@ -1,6 +1,6 @@
 # Creating your own game settings
 
-We recommend that you have checked [Understanding Data Assets](/UnderstandingAssets.md)  at at least a little bit of [How Settings Work](/HowSettingsWork.md). That said, let's go!  
+We recommend that you have checked [Understanding Data Assets](/1-UnderstandingAssets.md) and at least a little bit of [How Settings Work](/1-HowSettingsWork.md). That said, let's go!  
 
 Once done, check out [How to extend and use your own settings!](/3-ExtendingYourOwnGameSettings.md)  
 
@@ -8,7 +8,7 @@ First, let's create our subclass. We recommend creating a class straight from `U
 
 ![Image](/Resources/Assets/SS_ClassPicker_GameSettings.JPG)  
 
-With the type created, let's go over a few things. The `why` of this is explained [here](/HowSettingsWork.md#saving-and-serialization), for now let's just do a step by step of what's needed.  
+With the type created, let's go over a few things. The `why` of this is explained [here](/1-HowSavingWorks.md#serialization), for now let's just do a step by step of what's needed.  
 
 > **Important**: when creating your own type of game settings, it is crucial that you set your gameplay tag correctly! In blueprint that will mean checking your Class' default settings and setting the variable GameSettingsTag in that panel. In C++, it means setting it inside that class' constructor. More on this in the C++ section.  
 
@@ -27,7 +27,7 @@ Then, simply tag your property as `SaveGame`. That's it! no need to implement/Mo
 
 ## Manual Implementation Sample
 
-For showcase purporses, we'll duplicate the setup of the test game settings included in the plugin. We'll be testing with a blueprint struct S_UO_HeroSettings, and make an Array Property of this struct.  
+For showcase purposes, we'll duplicate the setup of the test game settings included in the plugin. We'll be testing with a blueprint struct S_UO_HeroSettings, and make an Array Property of this struct.  
 
 ![Image](/Resources/Framework/SS_TestGame_Defaults.JPG)  
 
@@ -44,7 +44,7 @@ In Synchronize Data, we have to do two things:
 
 ![image](/Resources/Framework/SS_TestGame_Synchronize.JPG)  
 
-Additionally, you can implement the `ParseData` function, which allows you to generically set information to your settings from anywhere. Its dynamics are explained [here](/WorkingWithTheSettingsSystem.md#writing-data).  
+Additionally, you can implement the `ParseData` function, which allows you to generically set information to your settings from anywhere. Its dynamics are explained [here](/1-WorkingWithTheSettingsSystem.md#writing-data).  
 
 ![Image](/Resources/Framework/SS_TestGame_SetData.JPG)  
 

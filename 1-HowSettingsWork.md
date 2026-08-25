@@ -46,7 +46,7 @@ Extending the brief explanation in the preface of this document, our Game Instan
 
 ### Lifetime
 
-For game purposes, Universal Options is alive at all times, except processes which proceed the Game Instance initiatizling and exceed the Game Instance Deinitalizing. Our system keeps the Data assets and the different setting objects alive throughout, ensuring data access.  
+For game purposes, Universal Options is alive at all times, except processes which precede the Game Instance initializing and exceed the Game Instance Deinitializing. Our system keeps the Data assets and the different setting objects alive throughout, ensuring data access.  
 
 ### Setting Lifetime
 
@@ -63,7 +63,7 @@ Our Setting Objects listen to things like on New World Initialized, On Actors In
 
 ## Working with the System
 
-We utilize the Gameplay Tag and Instanced object framework to interact with the different features that the plugin has to offer. Please visit [Working with the Settings System](/1-WorkingwiththeSettingsSystem.md) for information on getting, setting, and working with the plugin in blueprint and c++. Please check [Working with Json](/1-WorkingWithJson.md) for information on reading, writing, and saving data.  
+We utilize the Gameplay Tag and Instanced object framework to interact with the different features that the plugin has to offer. Please visit [Working with the Settings System](/1-WorkingWithTheSettingsSystem.md) for information on getting, setting, and working with the plugin in blueprint and c++. Please check [Working with Json](/1-WorkingWithJson.md) for information on reading, writing, and saving data.  
 
 ## Accessing and Paths
 
